@@ -237,7 +237,7 @@ const Selection = () => {
     };
     
     return (
-        <div className="w-full bg-white text-white h-fit">
+        <div className="w-full bg-white text-white h-screen">
             <section id='sec1' className=' h-full'>
                 <div className='text-blue-400 h-[10%]'>
                 <TypeAnimation className="flex items-center justify-center font-mono font-medium text-4xl"
@@ -263,13 +263,13 @@ const Selection = () => {
                         onClick={() => trigger('M')}
                         className={
                             nextClicked
-                                ? (management ? 'bg-gray-300 font-bold text-black text-xl h-fit w-1/2 z-0 transform rotate-y-3 transition-all duration-500 rounded-xl' : 'z-[-200000] transition-all delay-100 absolute hidden')
+                                ? (management ? 'bg-gray-300 font-bold text-black text-xl h-fit w-full z-0 transform rotate-y-3 transition-all duration-500 rounded-xl' : 'z-[-200000] transition-all delay-100 absolute hidden')
                                 : (management ? 'bg-green-300 font-bold text-black text-xl h-[50%] w-1/3 z-10 shadow-stone-950 shadow-2xl transform rotate-y-6 transition-all duration-500 rounded-3xl' : 'bg-gray-300 font-bold text-black text-xl h-[50%] w-1/3 z-0 transform rotate-y-3 transition-all duration-500 rounded-xl')
                         }
                     >
                          <h1 className={nextClicked?'':''}>management</h1>
                            <Lottie animationData={MManagement}className={nextClicked?'h-[30%] translate-x-10':''} />
-                           {nextClicked? <div className=' h-fit overflow-x-hidden
+                           {nextClicked? <div className=' h-fit overflow-x-hidden 
                              relative  flex justify-center items-center ' >
                             <ul className='flex flex-col  items-center gap-4 '>
                                 <lb className=' bg-gray-400  rounded-full pl-12 pr-12 pt-4 pb-4 '>finacial</lb>
@@ -284,7 +284,7 @@ const Selection = () => {
                         onClick={() => trigger('T')}
                         className={
                             nextClicked
-                                ? (technical ? '  bg-gray-300 font-bold text-black text-xl h-[90%] w-1/2 z-0 transform rotate-y-3 transition-all duration-500 rounded-xl' : ' z-[-200000] transition-all delay-100 absolute hidden')
+                                ? (technical ? '  bg-gray-300 font-bold text-black text-xl h-[90%] w-full z-0 transform rotate-y-3 transition-all duration-500 rounded-xl' : ' z-[-200000] transition-all delay-100 absolute hidden')
                                 : (technical ? 'bg-green-300 font-bold text-black text-xl h-[50%] w-1/3 z-10 shadow-stone-950 shadow-2xl transform rotate-y-6 transition-all duration-500 rounded-3xl' : 'bg-gray-300 font-bold text-black text-xl h-[50%] w-1/3 z-0 transform rotate-y-3 transition-all duration-500 rounded-xl')
                         }
                     >                            <h1 className={nextClicked?'':''}>technical</h1>
@@ -303,7 +303,7 @@ const Selection = () => {
                         onClick={() => trigger('D')}
                         className={
                             nextClicked
-                                ? (design ? 'bg-gray-300 font-bold text-black text-xl h-[90%] w-1/2 z-0 transform rotate-y-3 transition-all duration-500 rounded-xl' : ' z-[-200000] transition-all delay-100 absolute hidden')
+                                ? (design ? 'bg-gray-300 font-bold text-black text-xl h-[90%] w-full z-0 transform rotate-y-3 transition-all duration-500 rounded-xl' : ' z-[-200000] transition-all delay-100 absolute hidden')
                                 : (design ? 'bg-green-300 font-bold text-black text-xl h-[50%] w-1/3 z-10 shadow-stone-950 shadow-2xl transform rotate-y-6 transition-all duration-500 rounded-3xl' : 'bg-gray-300 font-bold text-black text-xl h-[50%] w-1/3 z-0 transform rotate-y-3 transition-all duration-500 rounded-xl')
                         }
                     >                            <h1>design</h1>
