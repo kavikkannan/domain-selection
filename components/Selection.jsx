@@ -238,7 +238,7 @@ const Selection = () => {
     
     return (
         <div className="w-full bg-white text-white h-screen">
-            <section id='sec1' className=' h-full'>
+            <section id='sec1' className='flex flex-col gap-5 h-full'>
                 <div className='text-blue-400 h-[10%]'>
                 <TypeAnimation className="flex items-center justify-center font-mono font-medium text-4xl"
                         sequence={[
