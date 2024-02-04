@@ -263,13 +263,13 @@ const Selection = () => {
                         onClick={() => trigger('M')}
                         className={
                             nextClicked
-                                ? (management ? 'bg-gray-300 font-bold text-black text-xl h-fit w-full z-0 transform rotate-y-3 transition-all duration-500 rounded-xl' : 'z-[-200000] transition-all delay-100 absolute hidden')
+                                ? (management ? 'bg-gray-300 font-bold text-black text-xl h-[50%] w-full z-0 transform rotate-y-3 transition-all duration-500 rounded-xl' : 'z-[-200000] transition-all delay-100 absolute hidden')
                                 : (management ? 'bg-green-300 font-bold text-black text-xl h-[25%] w-1/2 z-10 shadow-stone-950 shadow-2xl transform rotate-y-6 transition-all duration-500 rounded-3xl' : 'bg-gray-300 font-bold text-black text-xl h-[25%] w-1/2 z-0 transform rotate-y-3 transition-all duration-500 rounded-xl')
                         }
                     >
                          <h1 className={nextClicked?'':''}>management</h1>
                            <Lottie animationData={MManagement}className={nextClicked?'h-[30%] translate-x-10':''} />
-                           {nextClicked? <div className=' h-full overflow-x-hidden 
+                           {nextClicked? <div className=' h-1/2 overflow-x-hidden 
                              relative  flex justify-center items-center  ' >
                             <ul className='flex flex-col  items-center gap-4 '>
                                 <lb className=' bg-gray-400  rounded-full pl-12 pr-12 pt-4 pb-4 '>finacial</lb>
@@ -284,13 +284,13 @@ const Selection = () => {
                         onClick={() => trigger('T')}
                         className={
                             nextClicked
-                                ? (technical ? '  bg-gray-300 font-bold text-black text-xl h-[90%] w-full z-0 transform rotate-y-3 transition-all duration-500 rounded-xl' : ' z-[-200000] transition-all delay-100 absolute hidden')
+                                ? (technical ? '  bg-gray-300 font-bold text-black text-xl h-[50%] w-full z-0 transform rotate-y-3 transition-all duration-500 rounded-xl' : ' z-[-200000] transition-all delay-100 absolute hidden')
                                 : (technical ? 'bg-green-300 font-bold text-black text-xl h-[25%] w-1/2 z-10 shadow-stone-950 shadow-2xl transform rotate-y-6 transition-all duration-500 rounded-3xl' : 'bg-gray-300 font-bold text-black text-xl h-[25%] w-1/2 z-0 transform rotate-y-3 transition-all duration-500 rounded-xl')
                         }
                     >                            <h1 className={nextClicked?'':''}>technical</h1>
                            <Lottie animationData={TTecnical}className={nextClicked?'h-[30%] translate-x-10':''} />
                            {nextClicked? 
-                           <div className=' h-full overflow-x-hidden
+                           <div className=' h-1/2 overflow-x-hidden
                              relative  flex justify-center items-center ' >
                             <ul className='flex flex-col  items-center gap-4 '>
                                 <lb className=' bg-gray-400  rounded-full pl-12 pr-12 pt-4 pb-4 '>web dev</lb>
@@ -304,12 +304,12 @@ const Selection = () => {
                         onClick={() => trigger('D')}
                         className={
                             nextClicked
-                                ? (design ? 'bg-gray-300 font-bold text-black text-xl h-[90%] w-full z-0 transform rotate-y-3 transition-all duration-500 rounded-xl' : ' z-[-200000] transition-all delay-100 absolute hidden')
+                                ? (design ? 'bg-gray-300 font-bold text-black text-xl h-[50%] w-full z-0 transform rotate-y-3 transition-all duration-500 rounded-xl' : ' z-[-200000] transition-all delay-100 absolute hidden')
                                 : (design ? 'bg-green-300 font-bold text-black text-xl h-[25%] w-1/2 z-10 shadow-stone-950 shadow-2xl transform rotate-y-6 transition-all duration-500 rounded-3xl' : 'bg-gray-300 font-bold text-black text-xl h-[25%] w-1/2 z-0 transform rotate-y-3 transition-all duration-500 rounded-xl')
                         }
                     >                            <h1>design</h1>
                            <Lottie animationData={DDesign} className={nextClicked?'h-[30%]':''}/>
-                           {nextClicked? <div className=' h-full overflow-x-hidden
+                           {nextClicked? <div className=' h-1/2 overflow-x-hidden
                              relative  flex justify-center items-center ' >
                             <ul className='flex flex-col  items-center gap-4 '>
                                 <lb className=' bg-gray-400  rounded-full pl-12 pr-12 pt-4 pb-4 '>ui / ux</lb>
@@ -323,11 +323,11 @@ const Selection = () => {
                     
                 </div>
                 <div className='w-full flex justify-center items-center'>
-                    {!nextClicked && (
+                    
                     <button onClick={handleNext} className="   bg-green-400 text-white px-5 py-5 rounded-md ">
                         Next
                     </button>
-                )}</div>
+                </div>
             </section>
 
         </div>
