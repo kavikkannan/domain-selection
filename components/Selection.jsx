@@ -264,7 +264,7 @@ const Selection = () => {
                         className={
                             nextClicked
                                 ? (management ? 'bg-gray-300 font-bold text-black text-xl h-fit w-full z-0 transform rotate-y-3 transition-all duration-500 rounded-xl' : 'z-[-200000] transition-all delay-100 absolute hidden')
-                                : (management ? 'bg-green-300 font-bold text-black text-xl h-[50%] w-1/3 z-10 shadow-stone-950 shadow-2xl transform rotate-y-6 transition-all duration-500 rounded-3xl' : 'bg-gray-300 font-bold text-black text-xl h-[50%] w-1/3 z-0 transform rotate-y-3 transition-all duration-500 rounded-xl')
+                                : (management ? 'bg-green-300 font-bold text-black text-xl h-[25%] w-1/2 z-10 shadow-stone-950 shadow-2xl transform rotate-y-6 transition-all duration-500 rounded-3xl' : 'bg-gray-300 font-bold text-black text-xl h-[25%] w-1/2 z-0 transform rotate-y-3 transition-all duration-500 rounded-xl')
                         }
                     >
                          <h1 className={nextClicked?'':''}>management</h1>
@@ -285,7 +285,7 @@ const Selection = () => {
                         className={
                             nextClicked
                                 ? (technical ? '  bg-gray-300 font-bold text-black text-xl h-[90%] w-full z-0 transform rotate-y-3 transition-all duration-500 rounded-xl' : ' z-[-200000] transition-all delay-100 absolute hidden')
-                                : (technical ? 'bg-green-300 font-bold text-black text-xl h-[50%] w-1/3 z-10 shadow-stone-950 shadow-2xl transform rotate-y-6 transition-all duration-500 rounded-3xl' : 'bg-gray-300 font-bold text-black text-xl h-[50%] w-1/3 z-0 transform rotate-y-3 transition-all duration-500 rounded-xl')
+                                : (technical ? 'bg-green-300 font-bold text-black text-xl h-[25%] w-1/2 z-10 shadow-stone-950 shadow-2xl transform rotate-y-6 transition-all duration-500 rounded-3xl' : 'bg-gray-300 font-bold text-black text-xl h-[25%] w-1/2 z-0 transform rotate-y-3 transition-all duration-500 rounded-xl')
                         }
                     >                            <h1 className={nextClicked?'':''}>technical</h1>
                            <Lottie animationData={TTecnical}className={nextClicked?'h-[30%] translate-x-10':''} />
@@ -305,7 +305,7 @@ const Selection = () => {
                         className={
                             nextClicked
                                 ? (design ? 'bg-gray-300 font-bold text-black text-xl h-[90%] w-full z-0 transform rotate-y-3 transition-all duration-500 rounded-xl' : ' z-[-200000] transition-all delay-100 absolute hidden')
-                                : (design ? 'bg-green-300 font-bold text-black text-xl h-[50%] w-1/3 z-10 shadow-stone-950 shadow-2xl transform rotate-y-6 transition-all duration-500 rounded-3xl' : 'bg-gray-300 font-bold text-black text-xl h-[50%] w-1/3 z-0 transform rotate-y-3 transition-all duration-500 rounded-xl')
+                                : (design ? 'bg-green-300 font-bold text-black text-xl h-[25%] w-1/2 z-10 shadow-stone-950 shadow-2xl transform rotate-y-6 transition-all duration-500 rounded-3xl' : 'bg-gray-300 font-bold text-black text-xl h-[25%] w-1/2 z-0 transform rotate-y-3 transition-all duration-500 rounded-xl')
                         }
                     >                            <h1>design</h1>
                            <Lottie animationData={DDesign} className={nextClicked?'h-[30%]':''}/>
@@ -320,13 +320,14 @@ const Selection = () => {
                             </div>: null}
                         </motion.button>
                     </div>
+                    
+                </div>
+                <div className='w-full flex justify-center items-center'>
                     {!nextClicked && (
-                    <button onClick={handleNext} className=" absolute bottom-[10%] bg-green-400 text-white px-5 py-5 rounded-md ">
+                    <button onClick={handleNext} className="   bg-green-400 text-white px-5 py-5 rounded-md ">
                         Next
                     </button>
-                )}
-                </div>
-                
+                )}</div>
             </section>
 
         </div>
