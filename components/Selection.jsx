@@ -240,7 +240,7 @@ const Selection = () => {
         <div className="w-full bg-white text-white h-[200vh] ">
             <section id='sec1' className='flex flex-col gap-5 h-full'>
                 <div className='text-blue-400 h-[10%]'>
-                <TypeAnimation className="flex items-center justify-center font-mono font-medium text-4xl"
+                <TypeAnimation className="flex  justify-center font-mono font-medium text-2xl"
                         sequence={[
                             'Welcome to our community,',
                             1000,
@@ -269,8 +269,8 @@ const Selection = () => {
                     >
                          <h1 className={nextClicked?'':''}>management</h1>
                            <Lottie animationData={MManagement}className={nextClicked?'h-[30%] translate-x-10':''} />
-                           {nextClicked? <div className=' h-fit overflow-x-hidden 
-                             relative  flex justify-center items-center ' >
+                           {nextClicked? <div className=' h-full overflow-x-hidden 
+                             relative  flex justify-center items-center  ' >
                             <ul className='flex flex-col  items-center gap-4 '>
                                 <lb className=' bg-gray-400  rounded-full pl-12 pr-12 pt-4 pb-4 '>finacial</lb>
                                 <lb className=' bg-gray-400  rounded-full pl-12 pr-12 pt-4 pb-4 '>app dev</lb>
@@ -289,7 +289,8 @@ const Selection = () => {
                         }
                     >                            <h1 className={nextClicked?'':''}>technical</h1>
                            <Lottie animationData={TTecnical}className={nextClicked?'h-[30%] translate-x-10':''} />
-                           {nextClicked? <div className=' h-fit overflow-x-hidden
+                           {nextClicked? 
+                           <div className=' h-full overflow-x-hidden
                              relative  flex justify-center items-center ' >
                             <ul className='flex flex-col  items-center gap-4 '>
                                 <lb className=' bg-gray-400  rounded-full pl-12 pr-12 pt-4 pb-4 '>web dev</lb>
@@ -308,7 +309,7 @@ const Selection = () => {
                         }
                     >                            <h1>design</h1>
                            <Lottie animationData={DDesign} className={nextClicked?'h-[30%]':''}/>
-                           {nextClicked? <div className=' h-fit overflow-x-hidden
+                           {nextClicked? <div className=' h-full overflow-x-hidden
                              relative  flex justify-center items-center ' >
                             <ul className='flex flex-col  items-center gap-4 '>
                                 <lb className=' bg-gray-400  rounded-full pl-12 pr-12 pt-4 pb-4 '>ui / ux</lb>
