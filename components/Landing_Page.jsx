@@ -12,7 +12,7 @@ const LandingPage = () => {
   const handle =()=>{
       signInWithPopup(auth,provider).then((data)=>{
        
-          localStorage.setItem("email",data.user.email)
+          sessionStorage.setItem("email",data.user.email)
           router.push('/Domain_Selection');
       })
   }
