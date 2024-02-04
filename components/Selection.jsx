@@ -26,6 +26,8 @@ const Selection = () => {
     const [domain2, setDomain2] = useState("");
     const [subDomain1, setSubDomain1] = useState("");
     const [subDomain2, setSubDomain2] = useState("");
+
+    const [shownext, setshownext] = useState(false)
  
 
 
@@ -104,6 +106,7 @@ const Selection = () => {
                 alert('At most 2 categories can be selected.');
                 return;
             }
+            
         }
 
         // Concatenate the selected domain options into a string
@@ -319,6 +322,12 @@ const Selection = () => {
                         <div className='h-1/2 overflow-x-hidden relative flex justify-center items-center'>
                             <ul className='flex flex-col items-center gap-4'>
                             <button 
+                                onClick={() => handleOptionClick("technical", 'System Design')} 
+                                className={`px-4 py-2 rounded-md shadow-md ${subDomain1.includes('System Design') || subDomain2.includes('System Design') ? 'bg-green-400 text-white shadow-lg' : 'bg-blue-400 text-white'}`}
+                            >
+                                System Design
+                            </button>
+                            <button 
                                 onClick={() => handleOptionClick("technical", 'Web Dev')} 
                                 className={`px-4 py-2 rounded-md shadow-md ${subDomain1.includes('Web Dev') || subDomain2.includes('Web Dev') ? 'bg-green-400 text-white shadow-lg' : 'bg-blue-400 text-white'}`}
                             >
@@ -346,12 +355,7 @@ const Selection = () => {
                                 iot
                             </button>
 
-                            <button 
-                                onClick={() => handleOptionClick("technical", 'System Design')} 
-                                className={`px-4 py-2 rounded-md shadow-md ${subDomain1.includes('System Design') || subDomain2.includes('System Design') ? 'bg-green-400 text-white shadow-lg' : 'bg-blue-400 text-white'}`}
-                            >
-                                System Design
-                            </button>
+                            
                             </ul>
                         </div>
                     }
@@ -376,21 +380,21 @@ const Selection = () => {
                                 onClick={() => handleOptionClick("design", 'Graphic')} 
                                 className={`px-4 py-2 rounded-md shadow-md ${subDomain1.includes('Graphic') || subDomain2.includes('Graphic') ? 'bg-green-400 text-white shadow-lg' : 'bg-blue-400 text-white'}`}
                             >
-                                Graphic
+                                Graphic Design
                             </button>
 
                             <button 
                                 onClick={() => handleOptionClick("design", 'Video')} 
                                 className={`px-4 py-2 rounded-md shadow-md ${subDomain1.includes('Video') || subDomain2.includes('Video') ? 'bg-green-400 text-white shadow-lg' : 'bg-blue-400 text-white'}`}
                             >
-                                Video
+                                Video Editing
                             </button>
 
                             <button 
                                 onClick={() => handleOptionClick("design", 'solid works')} 
                                 className={`px-4 py-2 rounded-md shadow-md ${subDomain1.includes('solid works') || subDomain2.includes('solid works') ? 'bg-green-400 text-white shadow-lg' : 'bg-blue-400 text-white'}`}
                             >
-                                Solid Works
+                                Machine Design
                             </button></ul>
                         </div>
                     }
@@ -400,7 +404,7 @@ const Selection = () => {
             
         </div>
         <div className='w-full flex flex-row justify-center items-center gap-5 pb-5 '>
-                {!nextClicked && (
+                {shownext && (
                     <button onClick={handleNext} disabled={selectionDisabled} // Disable the button when selection is disabled
                         className="   bg-green-400 text-white px-5 py-5 rounded-md ">
                         Next
