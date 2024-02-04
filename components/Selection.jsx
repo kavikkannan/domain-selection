@@ -21,7 +21,7 @@ const Selection = () => {
 
 
 
-    const username = sessionStorage.getItem("email");
+    const username = typeof window !== 'undefined' ? sessionStorage.getItem("email") : null;
   
     const email = username.split("@")[0]; // Split the email address at "@" and take the first part
     console.log(email); // This will log 'kavi' if the email is 'kavi@vitstudent.ac.in'
