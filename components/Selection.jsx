@@ -19,14 +19,10 @@ const Selection = () => {
     const [selectionDisabled, setSelectionDisabled] = useState(false); // State to track selection disabled status
 
 
-    const router = useRouter();
+
 
     const username = localStorage.getItem("email");
-    if (!username) {
-        // Redirect to the home page if the username is not available
-        router.push('/');
-        return null; // Render nothing, as the user is being redirected
-    }
+  
     const email = username.split("@")[0]; // Split the email address at "@" and take the first part
     console.log(email); // This will log 'kavi' if the email is 'kavi@vitstudent.ac.in'
     
