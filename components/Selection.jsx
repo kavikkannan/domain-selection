@@ -11,7 +11,9 @@ import { TypeAnimation } from 'react-type-animation';
 import { ref, set } from 'firebase/database';
 import { db } from '@/firebaseConfig';
 import { useRouter } from 'next/navigation';
+
 const Selection = () => {
+    const router=useRouter();
     const [management, setManagement] = useState(false);
     const [technical, setTechnical] = useState(false);
     const [W, setW] = useState(false);
@@ -25,7 +27,7 @@ const Selection = () => {
     const [subDomain1, setSubDomain1] = useState("");
     const [subDomain2, setSubDomain2] = useState("");
  
-  const [subDomain, setSubDomain] = useState("ABC SUB DOMAIN");
+
 
   const submit = () => {
     const userRef = ref(db, 'UserNew/' + email+'/'+domain1);
@@ -35,7 +37,7 @@ const Selection = () => {
     set(domainRef, {
       Subdomain1: subDomain1,
     }).then(() => {
-      alert("Data2 saved successfully.");
+
     }).catch((error) => {
       console.error("Error saving data:", error);
     });
@@ -44,10 +46,11 @@ const Selection = () => {
       set(domainRef2, {
         Subdomain2: subDomain2,
       }).then(() => {
-        alert("Data2 saved successfully.");
+  
       }).catch((error) => {
         console.error("Error saving data:", error);
       });
+      router.push('/thank');
   };
 
   const trigger = (category) => {
