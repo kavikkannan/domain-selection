@@ -14,19 +14,12 @@ import { useRouter } from 'next/navigation';
 const Selection = () => {
     const [management, setManagement] = useState(false);
     const [technical, setTechnical] = useState(false);
+    const [W, setW] = useState(false);
     const [design, setDesign] = useState(false);
     const [nextClicked, setNextClicked] = useState(false);
     const [selectionDisabled, setSelectionDisabled] = useState(false); // State to track selection disabled status
+    const [email, setUsername] = useState("");
 
-
-
-
-    const username = typeof window !== 'undefined' ? sessionStorage.getItem("email") : null;
-  
-    const email = username.split("@")[0]; // Split the email address at "@" and take the first part
-    console.log(email); // This will log 'kavi' if the email is 'kavi@vitstudent.ac.in'
-    
-console.log(email);
     const [domain1, setDomain1] = useState("");
     const [domain2, setDomain2] = useState("");
     const [subDomain1, setSubDomain1] = useState("");
@@ -131,15 +124,9 @@ console.log(email);
         console.log("domain2");
         console.log(domain2);
     };
-    const Check = () => {
-        console.log("domain1");
-        console.log(domain1);
-        console.log("domain2");
-        console.log(domain2);
-        console.log("subdomain1");
-        console.log(subDomain1);
-        console.log("subdomain2");
-        console.log(subDomain2);
+    const handleNameSubmit = () => {
+        setW(true);
+
     };
     const Reset = () => {
         setSubDomain1("");
@@ -264,172 +251,191 @@ console.log(email);
 
         </div>
     ); */
-    return (
-        <div className="w-full bg-white text-white h-[200vh] ">
-            <section id='sec1' className='flex flex-col gap-5 h-full'>
-                <div className='text-blue-400 h-[10%]'>
-                    <TypeAnimation className="flex  justify-center font-mono font-medium text-2xl"
-                        sequence={[
-                            'Welcome to our community,',
-                            1000,
-                            'Welcome to our community,\nwe are happy to introduce our domains!!',
-                            1000,
-                        ]}
-                        speed={75}
-                        style={{ fontSize: '2em', display: 'flex', whiteSpace: 'pre-line', textAlign: 'center' }}
-                        repeat={null}
-                        cursor={false}
-                    />
-                </div>
-                <div className="flex  justify-center   h-[90%]">
-                    <div className="relative    flex flex-col justify-evenly items-center w-[70%] gap-8 ">
-                        <motion.button animate={{ x: 0 }} initial={{ x: -800 }}
-                            onClick={() => trigger('M')}
-                            className={
-                                nextClicked
-                                    ? (management ? 'bg-gray-300 font-bold text-black text-xl h-[50%] w-full z-0 transform rotate-y-3 transition-all duration-500 rounded-xl' : 'z-[-200000] transition-all delay-100 absolute hidden')
-                                    : (management ? 'bg-green-300 font-bold text-black text-xl h-[25%] w-1/2 z-10 shadow-stone-950 shadow-2xl transform rotate-y-6 transition-all duration-500 rounded-3xl' : 'bg-gray-300 font-bold text-black text-xl h-[25%] w-1/2 z-0 transform rotate-y-3 transition-all duration-500 rounded-xl')
-                            }
-                        >
-                            <h1 className={nextClicked ? '' : ''}>management</h1>
-                            <Lottie animationData={MManagement} className={nextClicked ? 'h-[30%] ' : ''} />
-                            {nextClicked ? <div className=' h-1/2 overflow-x-hidden
-                                 relative  flex justify-center items-center ' >
-                                <ul className='flex flex-col items-center gap-4 '>
-                                <button 
-                                    onClick={() => handleOptionClick("management", 'management and finance')} 
-                                    className={`px-4 py-2 rounded-md shadow-md ${subDomain1.includes('management and finance') || subDomain2.includes('management and finance') ? 'bg-green-400 text-white shadow-lg' : 'bg-blue-400 text-white'}`}
-                                >
-                                    management and finance
-                                </button>
-
-                                <button 
-                                    onClick={() => handleOptionClick("management", 'editorial and publicity')} 
-                                    className={`px-4 py-2 rounded-md shadow-md ${subDomain1.includes('editorial and publicity') || subDomain2.includes('editorial and publicity') ? 'bg-green-400 text-white shadow-lg' : 'bg-blue-400 text-white'}`}
-                                >
-                                    editorial and publicity
-                                </button>
-
-                                </ul>
-                            </div> : null}
-                        </motion.button>
-    
-                        <motion.button 
-                            animate={{ y: 0 }} 
-                            initial={{ y: 1200 }}
-                            onClick={() => trigger('T')}
-                            className={
-                                nextClicked
-                                    ? (technical ? 'bg-gray-300 font-bold text-black text-xl h-[50%] w-full z-0 transform rotate-y-3 transition-all duration-500 rounded-xl' : 'z-[-200000] transition-all delay-100 absolute hidden')
-                                    : (technical ? 'bg-green-300 font-bold text-black text-xl h-[25%] w-1/2 z-10 shadow-stone-950 shadow-2xl transform rotate-y-6 transition-all duration-500 rounded-3xl' : 'bg-gray-300 font-bold text-black text-xl h-[25%] w-1/2 z-0 transform rotate-y-3 transition-all duration-500 rounded-xl')
-                            }
-                        >
-                            <h1 className={nextClicked ? '' : ''}>technical</h1>
-                            <Lottie animationData={TTecnical} className={nextClicked ? 'h-[30%] ' : ''} />
-                            {nextClicked &&
-                                <div className='h-1/2 overflow-x-hidden relative flex justify-center items-center'>
-                                    <ul className='flex flex-col items-center gap-4'>
-                                    <button 
-                                        onClick={() => handleOptionClick("technical", 'Web Dev')} 
-                                        className={`px-4 py-2 rounded-md shadow-md ${subDomain1.includes('Web Dev') || subDomain2.includes('Web Dev') ? 'bg-green-400 text-white shadow-lg' : 'bg-blue-400 text-white'}`}
-                                    >
-                                        Web Dev
-                                    </button>
-
-                                    <button 
-                                        onClick={() => handleOptionClick("technical", 'App Dev')} 
-                                        className={`px-4 py-2 rounded-md shadow-md ${subDomain1.includes('App Dev') || subDomain2.includes('App Dev') ? 'bg-green-400 text-white shadow-lg' : 'bg-blue-400 text-white'}`}
-                                    >
-                                        App Dev
-                                    </button>
-
-                                    <button 
-                                        onClick={() => handleOptionClick("technical", 'ai/ml')} 
-                                        className={`px-4 py-2 rounded-md shadow-md ${subDomain1.includes('ai/ml') || subDomain2.includes('ai/ml') ? 'bg-green-400 text-white shadow-lg' : 'bg-blue-400 text-white'}`}
-                                    >
-                                        ai/ml
-                                    </button>
-
-                                    <button 
-                                        onClick={() => handleOptionClick("technical", 'iot')} 
-                                        className={`px-4 py-2 rounded-md shadow-md ${subDomain1.includes('iot') || subDomain2.includes('iot') ? 'bg-green-400 text-white shadow-lg' : 'bg-blue-400 text-white'}`}
-                                    >
-                                        iot
-                                    </button>
-
-                                    <button 
-                                        onClick={() => handleOptionClick("technical", 'System Design')} 
-                                        className={`px-4 py-2 rounded-md shadow-md ${subDomain1.includes('System Design') || subDomain2.includes('System Design') ? 'bg-green-400 text-white shadow-lg' : 'bg-blue-400 text-white'}`}
-                                    >
-                                        System Design
-                                    </button>
-                                    </ul>
-                                </div>
-                            }
-                        </motion.button>
-
-                        <motion.button 
-                            animate={{ x: 0 }} 
-                            initial={{ x: 800 }}
-                            onClick={() => trigger('D')}
-                            className={
-                                nextClicked
-                                    ? (design ? 'bg-gray-300 font-bold text-black text-xl h-[50%] w-full z-0 transform rotate-y-3 transition-all duration-500 rounded-xl' : 'z-[-200000] transition-all delay-100 absolute hidden')
-                                    : (design ? 'bg-green-300 font-bold text-black text-xl h-[25%] w-1/2 z-10 shadow-stone-950 shadow-2xl transform rotate-y-6 transition-all duration-500 rounded-3xl' : 'bg-gray-300 font-bold text-black text-xl h-[25%] w-1/2 z-0 transform rotate-y-3 transition-all duration-500 rounded-xl')
-                            }
-                        >
-                            <h1>design</h1>
-                            <Lottie animationData={DDesign} className={nextClicked ? 'h-[30%]' : ''} />
-                            {nextClicked && 
-                                <div className='h-1/2 overflow-x-hidden relative flex justify-center items-center'>
-                                    <ul className='flex flex-col items-center gap-4'>
-                                    <button 
-                                        onClick={() => handleOptionClick("design", 'Graphic')} 
-                                        className={`px-4 py-2 rounded-md shadow-md ${subDomain1.includes('Graphic') || subDomain2.includes('Graphic') ? 'bg-green-400 text-white shadow-lg' : 'bg-blue-400 text-white'}`}
-                                    >
-                                        Graphic
-                                    </button>
-
-                                    <button 
-                                        onClick={() => handleOptionClick("design", 'Video')} 
-                                        className={`px-4 py-2 rounded-md shadow-md ${subDomain1.includes('Video') || subDomain2.includes('Video') ? 'bg-green-400 text-white shadow-lg' : 'bg-blue-400 text-white'}`}
-                                    >
-                                        Video
-                                    </button>
-
-                                    <button 
-                                        onClick={() => handleOptionClick("design", 'solid works')} 
-                                        className={`px-4 py-2 rounded-md shadow-md ${subDomain1.includes('solid works') || subDomain2.includes('solid works') ? 'bg-green-400 text-white shadow-lg' : 'bg-blue-400 text-white'}`}
-                                    >
-                                        Solid Works
-                                    </button></ul>
-                                </div>
-                            }
-                        </motion.button>
-
-                    </div>
-                    <div className='w-full flex justify-center items-center '>
-                        {!nextClicked && (
-                            <button onClick={handleNext} disabled={selectionDisabled} // Disable the button when selection is disabled
-                                className="   bg-green-400 text-white px-5 py-5 rounded-md ">
-                                Next
-                            </button>)
-                        }
-                        {nextClicked && (
-                            <button onClick={submit}   // Disable the button when selection is disabled
-                                className="   bg-green-400 text-white px-5 py-5 rounded-md ">
-                                submit
-                            </button>)
-                        }
-                        {nextClicked && (
-                        <button onClick={Reset}   // Disable the button when selection is disabled
-                            className="   bg-green-400 text-white px-5 py-5 rounded-md ">
-                            reset
-                        </button>)}
-                    </div>
-                </div>
-            </section>
+    return (<>{W? (<div className="w-full bg-white text-white h-[200vh] ">
+    <section id='sec1' className='flex flex-col gap-5 h-full'>
+        <div className='text-blue-400 h-[10%]'>
+            <TypeAnimation className="flex  justify-center font-mono font-medium text-2xl"
+                sequence={[
+                    'Welcome  to our community,',
+                    1000,
+                    'Welcome to our community,\nwe are happy to introduce our domains!!',
+                    1000,
+                ]}
+                speed={75}
+                style={{ fontSize: '2em', display: 'flex', whiteSpace: 'pre-line', textAlign: 'center' }}
+                repeat={null}
+                cursor={false}
+            />
         </div>
+        <div className="flex  justify-center   h-[90%]">
+            <div className="relative    flex flex-col justify-evenly items-center w-[70%] gap-8 ">
+                <motion.button animate={{ x: 0 }} initial={{ x: -800 }}
+                    onClick={() => trigger('M')}
+                    className={
+                        nextClicked
+                            ? (management ? 'bg-gray-300 font-bold text-black text-xl h-[50%] w-full z-0 transform rotate-y-3 transition-all duration-500 rounded-xl' : 'z-[-200000] transition-all delay-100 absolute hidden')
+                            : (management ? 'bg-green-300 font-bold text-black text-xl h-[25%] w-1/2 z-10 shadow-stone-950 shadow-2xl transform rotate-y-6 transition-all duration-500 rounded-3xl' : 'bg-gray-300 font-bold text-black text-xl h-[25%] w-1/2 z-0 transform rotate-y-3 transition-all duration-500 rounded-xl')
+                    }
+                >
+                    <h1 className={nextClicked ? '' : ''}>management</h1>
+                    <Lottie animationData={MManagement} className={nextClicked ? 'h-[30%] ' : ''} />
+                    {nextClicked ? <div className=' h-1/2 overflow-x-hidden
+                         relative  flex justify-center items-center ' >
+                        <ul className='flex flex-col items-center gap-4 '>
+                        <button 
+                            onClick={() => handleOptionClick("management", 'management and finance')} 
+                            className={`px-4 py-2 rounded-md shadow-md ${subDomain1.includes('management and finance') || subDomain2.includes('management and finance') ? 'bg-green-400 text-white shadow-lg' : 'bg-blue-400 text-white'}`}
+                        >
+                            management and finance
+                        </button>
+
+                        <button 
+                            onClick={() => handleOptionClick("management", 'editorial and publicity')} 
+                            className={`px-4 py-2 rounded-md shadow-md ${subDomain1.includes('editorial and publicity') || subDomain2.includes('editorial and publicity') ? 'bg-green-400 text-white shadow-lg' : 'bg-blue-400 text-white'}`}
+                        >
+                            editorial and publicity
+                        </button>
+
+                        </ul>
+                    </div> : null}
+                </motion.button>
+
+                <motion.button 
+                    animate={{ y: 0 }} 
+                    initial={{ y: 1200 }}
+                    onClick={() => trigger('T')}
+                    className={
+                        nextClicked
+                            ? (technical ? 'bg-gray-300 font-bold text-black text-xl h-[50%] w-full z-0 transform rotate-y-3 transition-all duration-500 rounded-xl' : 'z-[-200000] transition-all delay-100 absolute hidden')
+                            : (technical ? 'bg-green-300 font-bold text-black text-xl h-[25%] w-1/2 z-10 shadow-stone-950 shadow-2xl transform rotate-y-6 transition-all duration-500 rounded-3xl' : 'bg-gray-300 font-bold text-black text-xl h-[25%] w-1/2 z-0 transform rotate-y-3 transition-all duration-500 rounded-xl')
+                    }
+                >
+                    <h1 className={nextClicked ? '' : ''}>technical</h1>
+                    <Lottie animationData={TTecnical} className={nextClicked ? 'h-[30%] ' : ''} />
+                    {nextClicked &&
+                        <div className='h-1/2 overflow-x-hidden relative flex justify-center items-center'>
+                            <ul className='flex flex-col items-center gap-4'>
+                            <button 
+                                onClick={() => handleOptionClick("technical", 'Web Dev')} 
+                                className={`px-4 py-2 rounded-md shadow-md ${subDomain1.includes('Web Dev') || subDomain2.includes('Web Dev') ? 'bg-green-400 text-white shadow-lg' : 'bg-blue-400 text-white'}`}
+                            >
+                                Web Dev
+                            </button>
+
+                            <button 
+                                onClick={() => handleOptionClick("technical", 'App Dev')} 
+                                className={`px-4 py-2 rounded-md shadow-md ${subDomain1.includes('App Dev') || subDomain2.includes('App Dev') ? 'bg-green-400 text-white shadow-lg' : 'bg-blue-400 text-white'}`}
+                            >
+                                App Dev
+                            </button>
+
+                            <button 
+                                onClick={() => handleOptionClick("technical", 'ai/ml')} 
+                                className={`px-4 py-2 rounded-md shadow-md ${subDomain1.includes('ai/ml') || subDomain2.includes('ai/ml') ? 'bg-green-400 text-white shadow-lg' : 'bg-blue-400 text-white'}`}
+                            >
+                                ai/ml
+                            </button>
+
+                            <button 
+                                onClick={() => handleOptionClick("technical", 'iot')} 
+                                className={`px-4 py-2 rounded-md shadow-md ${subDomain1.includes('iot') || subDomain2.includes('iot') ? 'bg-green-400 text-white shadow-lg' : 'bg-blue-400 text-white'}`}
+                            >
+                                iot
+                            </button>
+
+                            <button 
+                                onClick={() => handleOptionClick("technical", 'System Design')} 
+                                className={`px-4 py-2 rounded-md shadow-md ${subDomain1.includes('System Design') || subDomain2.includes('System Design') ? 'bg-green-400 text-white shadow-lg' : 'bg-blue-400 text-white'}`}
+                            >
+                                System Design
+                            </button>
+                            </ul>
+                        </div>
+                    }
+                </motion.button>
+
+                <motion.button 
+                    animate={{ x: 0 }} 
+                    initial={{ x: 800 }}
+                    onClick={() => trigger('D')}
+                    className={
+                        nextClicked
+                            ? (design ? 'bg-gray-300 font-bold text-black text-xl h-[50%] w-full z-0 transform rotate-y-3 transition-all duration-500 rounded-xl' : 'z-[-200000] transition-all delay-100 absolute hidden')
+                            : (design ? 'bg-green-300 font-bold text-black text-xl h-[25%] w-1/2 z-10 shadow-stone-950 shadow-2xl transform rotate-y-6 transition-all duration-500 rounded-3xl' : 'bg-gray-300 font-bold text-black text-xl h-[25%] w-1/2 z-0 transform rotate-y-3 transition-all duration-500 rounded-xl')
+                    }
+                >
+                    <h1>design</h1>
+                    <Lottie animationData={DDesign} className={nextClicked ? 'h-[30%]' : ''} />
+                    {nextClicked && 
+                        <div className='h-1/2 overflow-x-hidden relative flex justify-center items-center'>
+                            <ul className='flex flex-col items-center gap-4'>
+                            <button 
+                                onClick={() => handleOptionClick("design", 'Graphic')} 
+                                className={`px-4 py-2 rounded-md shadow-md ${subDomain1.includes('Graphic') || subDomain2.includes('Graphic') ? 'bg-green-400 text-white shadow-lg' : 'bg-blue-400 text-white'}`}
+                            >
+                                Graphic
+                            </button>
+
+                            <button 
+                                onClick={() => handleOptionClick("design", 'Video')} 
+                                className={`px-4 py-2 rounded-md shadow-md ${subDomain1.includes('Video') || subDomain2.includes('Video') ? 'bg-green-400 text-white shadow-lg' : 'bg-blue-400 text-white'}`}
+                            >
+                                Video
+                            </button>
+
+                            <button 
+                                onClick={() => handleOptionClick("design", 'solid works')} 
+                                className={`px-4 py-2 rounded-md shadow-md ${subDomain1.includes('solid works') || subDomain2.includes('solid works') ? 'bg-green-400 text-white shadow-lg' : 'bg-blue-400 text-white'}`}
+                            >
+                                Solid Works
+                            </button></ul>
+                        </div>
+                    }
+                </motion.button>
+
+            </div>
+            <div className='w-full flex justify-center items-center '>
+                {!nextClicked && (
+                    <button onClick={handleNext} disabled={selectionDisabled} // Disable the button when selection is disabled
+                        className="   bg-green-400 text-white px-5 py-5 rounded-md ">
+                        Next
+                    </button>)
+                }
+                {nextClicked && (
+                    <button onClick={submit}   // Disable the button when selection is disabled
+                        className="   bg-green-400 text-white px-5 py-5 rounded-md ">
+                        submit
+                    </button>)
+                }
+                {nextClicked && (
+                <button onClick={Reset}   // Disable the button when selection is disabled
+                    className="   bg-green-400 text-white px-5 py-5 rounded-md ">
+                    reset
+                </button>)}
+            </div>
+        </div>
+    </section>
+</div>):(<div className="flex bg-white flex-col items-center justify-center h-screen text-black">
+    <h1 className="text-3xl  font-bold mb-4">Welcome! Please enter your name:</h1>
+    <input
+        type="text"
+        value={email}
+        onChange={(e) => setUsername(e.target.value)}
+        placeholder="Your Name"
+        className="border border-gray-400 rounded-md px-3 py-2 mb-4"
+    />
+    <button
+        onClick={handleNameSubmit}
+        className="bg-green-500 text-white px-4 py-2 rounded-md hover:bg-green-600 transition-colors"
+    >
+        Submit
+    </button>
+</div>)
+
+    }
+
+    \</>
+        
     );
     
 };
