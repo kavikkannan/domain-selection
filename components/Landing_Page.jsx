@@ -3,8 +3,23 @@ import React from 'react';
 import Lottie from 'lottie-react';
 import robo_animation from '@/assests/robo_animation.json'
 import Link from 'next/link';
-
+import { useRouter } from 'next/navigation';
+import { auth,provider } from '@/firebaseConfig';
+import { signInWithPopup } from 'firebase/auth';
+import { useState,useEffect } from 'react';
 const LandingPage = () => {
+  const router=useRouter()
+  const handle =()=>{
+      signInWithPopup(auth,provider).then((data)=>{
+       
+          localStorage.setItem("email",data.user.email)
+          router.push('/Domain_Selection');
+      })
+  }
+
+
+
+
   return (
     <div className="absolute top-0 -z-10 w-full bg-gray-800 text-white min-h-screen flex items-center justify-center ">
 
@@ -43,9 +58,9 @@ const LandingPage = () => {
         </div>
 
         <div className="text-center">
-          <Link href='/Home' className="bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-blue-600 transition duration-300">
-            Start Exploring
-          </Link>
+          <button onClick={handle} className="bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-blue-600 transition duration-300">
+            signin with vit student
+          </button>
         </div>
 
       </div>
