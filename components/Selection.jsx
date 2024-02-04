@@ -394,7 +394,9 @@ const Selection = () => {
                 </motion.button>
 
             </div>
-            <div className='w-full flex justify-center items-center '>
+            
+        </div>
+        <div className='w-full flex flex-row justify-center items-center gap-5 pb-5 '>
                 {!nextClicked && (
                     <button onClick={handleNext} disabled={selectionDisabled} // Disable the button when selection is disabled
                         className="   bg-green-400 text-white px-5 py-5 rounded-md ">
@@ -413,7 +415,6 @@ const Selection = () => {
                     reset
                 </button>)}
             </div>
-        </div>
     </section>
 </div>):(<div className="flex bg-white flex-col items-center justify-center h-screen text-black">
     <h1 className="text-3xl  font-bold mb-4">Welcome! Please enter your name:</h1>
@@ -434,7 +435,7 @@ const Selection = () => {
 
     }
 
-    \</>
+    </>
         
     );
     
