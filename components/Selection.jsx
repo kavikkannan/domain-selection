@@ -12,11 +12,12 @@ import { ref, set } from 'firebase/database';
 import { db } from '@/firebaseConfig';
 import { useRouter } from 'next/navigation';
 
+
 const Selection = () => {
     const router=useRouter();
     const [management, setManagement] = useState(false);
     const [technical, setTechnical] = useState(false);
-    const [W, setW] = useState(false);
+    const [W, setW] = useState(true);
     const [design, setDesign] = useState(false);
     const [nextClicked, setNextClicked] = useState(false);
     const [selectionDisabled, setSelectionDisabled] = useState(false); // State to track selection disabled status
@@ -135,12 +136,17 @@ const Selection = () => {
     const Reset = () => {
         setSubDomain1("");
         setSubDomain2("");
+        setCon1(false);
+        setCon2(false);
     };
-   
+    const [subCon1, setCon1] = useState(false);
+    const [subCon2, setCon2] = useState(false);
     const handleOptionClick = (domain, option) => {
         if (domain == domain1) {
+            setCon1(true);
             setSubDomain1(prevSubDomain => prevSubDomain ? prevSubDomain + ' ' + option : option);
         } else if (domain == domain2) {
+            setCon2(true);
             setSubDomain2(prevSubDomain => prevSubDomain ? prevSubDomain + ' ' + option : option);
         }
     };
@@ -407,7 +413,7 @@ const Selection = () => {
                         Next
                     </button>)
                 }
-                {nextClicked && (
+                {nextClicked && subCon1 && subCon2 && (
                     <button onClick={submit}   // Disable the button when selection is disabled
                         className="   bg-green-400 text-white px-5 py-5 rounded-md ">
                         submit
@@ -429,12 +435,12 @@ const Selection = () => {
         placeholder="Your Name"
         className="border border-gray-400 rounded-md px-3 py-2 mb-4"
     />
-    <button
+    {subCon1 && subCon2 (<button
         onClick={handleNameSubmit}
         className="bg-green-500 text-white px-4 py-2 rounded-md hover:bg-green-600 transition-colors"
     >
         Submit
-    </button>
+    </button>)}
 </div>)
 
     }
