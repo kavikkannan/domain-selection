@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Lottie from 'lottie-react';
 import Link from 'next/link';
 import MManagement from '@/assests/management.json';
@@ -21,8 +21,12 @@ const Selection = () => {
     const [design, setDesign] = useState(false);
     const [nextClicked, setNextClicked] = useState(false);
     const [selectionDisabled, setSelectionDisabled] = useState(false); // State to track selection disabled status
-    const [e, setEmail] = useState(sessionStorage.getItem("email") || "");
+    
     const [email, setEmail1] = useState("");
+    useEffect(()=>{
+        const e =sessionStorage.getItem("email");
+        setEmail1(e);
+    },[])
     const [domain1, setDomain1] = useState("");
     const [domain2, setDomain2] = useState("");
     const [subDomain1, setSubDomain1] = useState("");
@@ -32,7 +36,7 @@ const Selection = () => {
 
 
   const submit = () => {
-    let newemail=e.substring(0, email.indexOf('@'));
+    let newemail=email.substring(0, email.indexOf('@'));
     setEmail1(newemail);
     const userRef = ref(db, 'UserNew/' + email+'/'+domain1);
     
