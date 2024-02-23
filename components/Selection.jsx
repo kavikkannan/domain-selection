@@ -11,7 +11,7 @@ import { TypeAnimation } from 'react-type-animation';
 import { ref, set } from 'firebase/database';
 import { db } from '@/firebaseConfig';
 import { useRouter } from 'next/navigation';
-
+import userData from '@/assests/rereg_std_fata.json';
 
 const Selection = () => {
     const router=useRouter();
@@ -21,12 +21,29 @@ const Selection = () => {
     const [design, setDesign] = useState(false);
     const [nextClicked, setNextClicked] = useState(false);
     const [selectionDisabled, setSelectionDisabled] = useState(false); // State to track selection disabled status
-    
+    const [regno, setRegno] = useState("");
     const [email, setEmail1] = useState("");
-    useEffect(()=>{
-        const e =sessionStorage.getItem("email");
-        setEmail1(e);
-    },[])
+    useEffect(() => {
+    const e = sessionStorage.getItem("email");
+    
+    // Check if userData is available before accessing it
+    if (userData && userData.users) {
+        const userDataWithEmail = userData.users.find(user => user.EmailId === e);
+        if (userDataWithEmail) {
+            const registerNumber = userDataWithEmail.RegisterNumber;
+            const studentName = userDataWithEmail.StudentName;
+            const ff = studentName+"9999"+registerNumber;
+            setEmail1(ff); // Store register number in state
+            
+        } else {
+            console.log("Register number not found for the provided email.");
+        }
+    } else {
+        console.log("userData is undefined or does not contain the expected structure.");
+    }
+}, []);
+
+    console.log(email);
     const [domain1, setDomain1] = useState("");
     const [domain2, setDomain2] = useState("");
     const [subDomain1, setSubDomain1] = useState("");
@@ -36,8 +53,8 @@ const Selection = () => {
 
 
   const submit = () => {
-    let newemail=email.substring(0, email.indexOf('@'));
-    setEmail1(newemail);
+    console.log(regno);
+    console.log(email);
     const userRef = ref(db, 'UserNew/' + email+'/'+domain1);
     
 
