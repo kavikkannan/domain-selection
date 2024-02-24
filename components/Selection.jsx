@@ -292,7 +292,7 @@ const studentName = userDataWithEmail.StudentName; setStdName(studentName); retu
     return (<>{W? (
     <div className="w-full bg-white text-white h-[100vh] sm:h-[100vh] ">
     <section id='sec1' className='flex flex-col gap-5 h-[100%]'>
-        <div className='text-blue-400  h-[10%]'>
+        <div className='text-blue-400  h-fit  '>
             <TypeAnimation className="flex justify-center font-mono font-medium text-2xl"
                 sequence={[
                     `hi ${stdname},`,
