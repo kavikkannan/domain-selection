@@ -11,6 +11,7 @@ import userData from '@/assests/rereg_std_fata.json';
 
 const LandingPage = () => {
   const router=useRouter()
+  const [stdname,setStdname]=useState("");
   const handle =()=>{
       signInWithPopup(auth,provider).then((data)=>{
        
@@ -20,7 +21,7 @@ const LandingPage = () => {
         if (userDataWithEmail) {
             const registerNumber = userDataWithEmail.RegisterNumber;
             const studentName = userDataWithEmail.StudentName;
-            sessionStorage.setItem("stdname",studentName);
+            setStdname(studentName);
         } else {
             console.log("Register number not found for the provided email.");
         }

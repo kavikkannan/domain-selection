@@ -290,7 +290,7 @@ const studentName = userDataWithEmail.StudentName; setStdName(studentName); retu
         </div>
     ); */
     return (<>{W? (
-    <div className="w-full bg-white text-white h-[100vh] sm:h-[100vh] ">
+    <div className="w-full bg-white text-white h-fit sm:h-[100vh] ">
     <section id='sec1' className='flex flex-col gap-5 h-[100%]'>
         <div className='text-blue-400  h-fit w-full '>
             <TypeAnimation className="flex justify-center font-mono font-medium text-2xl sm:text-3xl"
