@@ -317,8 +317,8 @@ const studentName = userDataWithEmail.StudentName; setStdName(studentName); retu
                 cursor={false}
             />
         </div>
-        <div className="flex  justify-center bg-red-300 h-fit sm:items-center sm:h-[70%]">
-            <div className="relative flex flex-col bg-green-100 items-center w-[80%] h-fit gap-10 sm:flex-row sm:items-start sm:h-full sm:justify-evenly ">
+        <div className="flex  justify-center  h-fit sm:items-center sm:h-[70%]">
+            <div className="relative flex flex-col  items-center w-[80%] h-fit gap-10 sm:flex-row sm:items-start sm:h-full sm:justify-evenly ">
                 
                 <motion.button animate={{ x: 0 }} initial={{ x: -800 }}
                     onClick={() => trigger('M')}
