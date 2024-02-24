@@ -7,6 +7,8 @@ import { useRouter } from 'next/navigation';
 import { auth,provider } from '@/firebaseConfig';
 import { signInWithPopup } from 'firebase/auth';
 import { useState,useEffect } from 'react';
+import userData from '@/assests/rereg_std_fata.json';
+
 const LandingPage = () => {
   const router=useRouter()
   const handle =()=>{
@@ -14,6 +16,14 @@ const LandingPage = () => {
        
           sessionStorage.setItem("email",data.user.email)
           router.push('/Domain_Selection');
+          const userDataWithEmail = userData.users.find(user => user.EmailId === data.user.email);
+        if (userDataWithEmail) {
+            const registerNumber = userDataWithEmail.RegisterNumber;
+            const studentName = userDataWithEmail.StudentName;
+            sessionStorage.setItem("stdname",studentName);
+        } else {
+            console.log("Register number not found for the provided email.");
+        }
       })
   }
 
