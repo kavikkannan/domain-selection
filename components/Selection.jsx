@@ -292,19 +292,19 @@ const studentName = userDataWithEmail.StudentName; setStdName(studentName); retu
     return (<>{W? (
     <div className="w-full bg-white text-white h-[100vh] sm:h-[100vh] ">
     <section id='sec1' className='flex flex-col gap-5 h-[100%]'>
-        <div className='text-blue-400  h-fit  '>
-            <TypeAnimation className="flex justify-center font-mono font-medium text-2xl"
+        <div className='text-blue-400  h-fit w-full '>
+            <TypeAnimation className="flex justify-center font-mono font-medium text-2xl sm:text-3xl"
                 sequence={[
                     `hi ${stdname},`,
                     1000,
                 ]}
                 speed={75}
-                style={{ fontSize: '2em', display: 'flex', whiteSpace: 'pre-line', textAlign: 'center' }}
+                style={{ display: 'flex', whiteSpace: 'pre-line', textAlign: 'center' }}
                 repeat={null}
                 cursor={false}
             />
 
-            <TypeAnimation className="flex  justify-center font-mono font-medium text-2xl"
+            <TypeAnimation className="flex  justify-center font-mono font-medium text-1xl sm:text-2xl"
                 sequence={[
                     'Welcome  to our community,',
                     1000,
@@ -312,7 +312,7 @@ const studentName = userDataWithEmail.StudentName; setStdName(studentName); retu
                     1000,
                 ]}
                 speed={75}
-                style={{ fontSize: '2em', display: 'flex', whiteSpace: 'pre-line', textAlign: 'center' }}
+                style={{  display: 'flex', whiteSpace: 'pre-line', textAlign: 'center' }}
                 repeat={null}
                 cursor={false}
             />
