@@ -2,8 +2,6 @@
 import React from 'react';
 import Landing from '@/components/Landing_Page';
 import Commonheader from '@/components/Common_Header';
-import Lottie from 'lottie-react';
-import under from '@/assests/under.json'
 export default function Main() {
     return (
         <div>

@@ -20,7 +20,7 @@ const Selection = () => {
     const [W, setW] = useState(true);
     const [design, setDesign] = useState(false);
     const [nextClicked, setNextClicked] = useState(false);
-    const [selectionDisabled, setSelectionDisabled] = useState(false); // State to track selection disabled status
+    const [selectionDisabled, setSelectionDisabled] = useState(false);
     const [regno, setRegno] = useState("");
     const [stdname, setStdName] = useState("");
     const [email, setEmail1] = useState("");
@@ -34,7 +34,6 @@ const Selection = () => {
                 if (!sessionStorage.getItem("emailstatus")){
                     router.push("/");
                 }
-                // Check if userData is available before accessing it
                 if (userData && userData.users) {
                     const userDataWithEmail = userData.users.find(user => user.EmailId === e);
                     if (userDataWithEmail) {
@@ -43,7 +42,7 @@ const Selection = () => {
                         setStdName(studentName);
     
                         const ff = studentName + "9999" + registerNumber;
-                        setEmail1(ff); // Store register number in state
+                        setEmail1(ff); 
                     } else {
                         console.log("Register number not found for the provided email.");
                     }
@@ -57,10 +56,6 @@ const Selection = () => {
     
         fetchData();
     }, []);
-
-/* if(email1){ const userDataWithEmail = userData.users.find(user => user.EmailId === email1);
-const studentName = userDataWithEmail.StudentName; setStdName(studentName); return stdname
-} else{console.log("sdsaf");} */
     
     const [domain1, setDomain1] = useState("");
     const [domain2, setDomain2] = useState("");
@@ -142,11 +137,7 @@ const studentName = userDataWithEmail.StudentName; setStdName(studentName); retu
                 return;
             }
         }
-
-        // Concatenate the selected domain options into a string
         selectedSubDomain = selectedSubDomain ? selectedSubDomain + ', ' + category : category;
-
-        // Update the state of subDomain1 or subDomain2 based on category
         if (category === 'M') {
             setSubDomain1(selectedSubDomain);
         } else {
@@ -158,7 +149,6 @@ const studentName = userDataWithEmail.StudentName; setStdName(studentName); retu
     const handleNext = () => {
         setNextClicked(true);
         setSelectionDisabled(true);
-        // Handle next button click, navigate or perform any other action
        
     };
 
@@ -193,117 +183,6 @@ const studentName = userDataWithEmail.StudentName; setStdName(studentName); retu
         }
     };
     
-    
-  /*   return (
-        <div className="w-full bg-white text-white h-[200vh] ">
-            <section id='sec1' className='flex flex-col gap-5 h-full'>
-                <div className='text-blue-400 h-[10%]'>
-                <TypeAnimation className="flex  justify-center font-mono font-medium text-2xl"
-                        sequence={[
-                            'Welcome to our community,',
-                            1000,
-                            'Welcome to our community,\nwe are happy to introduce our domains!!',
-                            1000,
-                        ]}
-                       
-                        speed={75}
-                        style={{ fontSize: '2em', display: 'flex',whiteSpace:'pre-line',textAlign:'center' }}
-                        repeat={null}
-                        cursor={false}
-                        />
-                        
-                    
-                </div>
-                
-                
-                <div className="flex  justify-center   h-[90%]">
-                    <div className="relative    flex flex-col justify-evenly items-center w-[70%] gap-8 ">
-                    <motion.button animate={{x:0}} initial={{x:-800}}
-                        onClick={() => trigger('M')}
-                        className={
-                            nextClicked
-                                ? (management ? 'bg-gray-300 font-bold text-black text-xl h-[50%] w-full z-0 transform rotate-y-3 transition-all duration-500 rounded-xl' : 'z-[-200000] transition-all delay-100 absolute hidden')
-                                : (management ? 'bg-green-300 font-bold text-black text-xl h-[25%] w-1/2 z-10 shadow-stone-950 shadow-2xl transform rotate-y-6 transition-all duration-500 rounded-3xl' : 'bg-gray-300 font-bold text-black text-xl h-[25%] w-1/2 z-0 transform rotate-y-3 transition-all duration-500 rounded-xl')
-                        }
-                    >
-                         <h1 className={nextClicked?'':''}>management</h1>
-                           <Lottie animationData={MManagement}className={nextClicked?'h-[30%] ':''} />
-                           {nextClicked? <div className=' h-1/2 overflow-x-hidden 
-                             relative  flex justify-center items-center  ' >
-                            <ul className='flex flex-col items-center gap-4 '>
-                                <b className="bg-green-400 text-white px-4 py-2 rounded-md shadow-md">management and finance</b>                       
-                                <b className="bg-green-400 text-white px-4 py-2 rounded-md shadow-md">editorial and publicity</b>                       
-
-                            </ul>
-                            </div>: null}
-                    </motion.button>
-
-                    <motion.button animate={{y:0}} initial={{y:1200}}
-                        onClick={() => trigger('T')}
-                        className={
-                            nextClicked
-                                ? (technical ? '  bg-gray-300 font-bold text-black text-xl h-[50%] w-full z-0 transform rotate-y-3 transition-all duration-500 rounded-xl' : ' z-[-200000] transition-all delay-100 absolute hidden')
-                                : (technical ? 'bg-green-300 font-bold text-black text-xl h-[25%] w-1/2 z-10 shadow-stone-950 shadow-2xl transform rotate-y-6 transition-all duration-500 rounded-3xl' : 'bg-gray-300 font-bold text-black text-xl h-[25%] w-1/2 z-0 transform rotate-y-3 transition-all duration-500 rounded-xl')
-                        }
-                    >                            <h1 className={nextClicked?'':''}>technical</h1>
-                           <Lottie animationData={TTecnical}className={nextClicked?'h-[30%] ':''} />
-                           {nextClicked? 
-                           <div className=' h-1/2 overflow-x-hidden
-                             relative  flex justify-center items-center ' >
-                            <ul className='flex flex-col items-center gap-4 '>
-                                <b  className="bg-green-400 text-white px-4 py-2 rounded-md shadow-md">Web Dev</b>
-                                <b  className="bg-green-400 text-white px-4 py-2 rounded-md shadow-md">App Dev</b>
-                                <b  className="bg-green-400 text-white px-4 py-2 rounded-md shadow-md">ai/ml</b>
-                                <b  className="bg-green-400 text-white px-4 py-2 rounded-md shadow-md">iot</b>                        
-                                <b  className="bg-green-400 text-white px-4 py-2 rounded-md shadow-md">System Design</b>                        
-
-                            </ul>
-                            </div>: null}
-                        </motion.button>
-                        <motion.button animate={{x:0}} initial={{x:800}}
-                        onClick={() => trigger('D')}
-                        className={
-                            nextClicked
-                                ? (design ? 'bg-gray-300 font-bold text-black text-xl h-[50%] w-full z-0 transform rotate-y-3 transition-all duration-500 rounded-xl' : ' z-[-200000] transition-all delay-100 absolute hidden')
-                                : (design ? 'bg-green-300 font-bold text-black text-xl h-[25%] w-1/2 z-10 shadow-stone-950 shadow-2xl transform rotate-y-6 transition-all duration-500 rounded-3xl' : 'bg-gray-300 font-bold text-black text-xl h-[25%] w-1/2 z-0 transform rotate-y-3 transition-all duration-500 rounded-xl')
-                        }
-                    >                            <h1>design</h1>
-                           <Lottie animationData={DDesign} className={nextClicked?'h-[30%]':''}/>
-                           {nextClicked? <div className=' h-1/2 overflow-x-hidden
-                             relative  flex justify-center items-center ' >
-                            <ul className='flex flex-col items-center gap-4 '>
-                                <b  className="bg-green-400 text-white px-4 py-2 rounded-md shadow-md">Graphic</b>
-                                <b  className="bg-green-400 text-white px-4 py-2 rounded-md shadow-md">Video</b>
-                                <b  className="bg-green-400 text-white px-4 py-2 rounded-md shadow-md">solid works</b>
-                            </ul>
-                            </div>: null}
-                        </motion.button>
-                    </div>
-                    <div className='w-full flex justify-center items-center '>
-                    {!nextClicked &&(
-                        <button onClick={handleNext}   disabled={selectionDisabled} // Disable the button when selection is disabled
-                        className="   bg-green-400 text-white px-5 py-5 rounded-md ">
-                        Next
-                        </button>)
-                    }
-                   {!nextClicked &&(
-                        <button onClick={submit}   // Disable the button when selection is disabled
-                        className="   bg-green-400 text-white px-5 py-5 rounded-md ">
-                        submit
-                        </button>)
-                    }
-                    <button onClick={Check}   // Disable the button when selection is disabled
-                        className="   bg-green-400 text-white px-5 py-5 rounded-md ">
-                        check
-                        </button>
-                </div>
-                </div>
-                
-            </section>
-
-        </div>
-    ); */
-
     return (
         <>
             {loading ? (
@@ -469,18 +348,18 @@ const studentName = userDataWithEmail.StudentName; setStdName(studentName); retu
                     </button>
                 )}
                 {nextClicked && subCon1 && subCon2 && (
-                    <button onClick={submit}   // Disable the button when selection is disabled
+                    <button onClick={submit}  
                         className="   bg-green-400 text-white px-6 py-3 rounded-md font-semibold ">
                         submit
                     </button>)
                 }
                 {nextClicked && (
-                <button onClick={Reset}   // Disable the button when selection is disabled
+                <button onClick={Reset}  
                     className="   bg-green-400 text-white px-6 py-3 rounded-md font-semibold ">
                     reset
                 </button>)}
                 {nextClicked && (
-                <button onClick={back}   // Disable the button when selection is disabled
+                <button onClick={back}   
                     className="   bg-green-400 text-white px-6 py-3 rounded-md font-semibold ">
                     go back
                 </button>)}

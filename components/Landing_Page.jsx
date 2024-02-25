@@ -1,11 +1,9 @@
 import React, { useState } from 'react';
 import Lottie from 'lottie-react';
 import robo_animation from '@/assests/robo_animation.json';
-import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { auth, provider } from '@/firebaseConfig';
 import { signInWithPopup } from 'firebase/auth';
-import { useEffect } from 'react';
 import userData from '@/assests/rereg_std_fata.json';
 import Loading from './Loading';
 
@@ -46,8 +44,6 @@ const LandingPage = () => {
                 <div className="absolute top-0 -z-10 w-full bg-gray-800 text-white min-h-screen flex items-center justify-center ">
 
                     <div className="absolute left-[99999999] sm:left-0  w-1/2 animate-roaming-container">
-                        {/* <img className='roaming-symbol w-20 h-20' src="/images/login_bg2.jpg" alt="" />
-                <img className='roaming-symbol w-20 h-20' src="/images/login_bg2.jpg" alt="" /> */}
                         <Lottie animationData={robo_animation}  />
                     </div>
                     <div className=" absolute right-4  max-w-4xl bg-gray-900 p-8 shadow-md rounded-md  z-10">
