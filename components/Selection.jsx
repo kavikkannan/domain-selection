@@ -26,28 +26,36 @@ const Selection = () => {
     const [email, setEmail1] = useState("");
     const [email1, setEmail2] = useState("");
     useEffect(() => {
-    const e = sessionStorage.getItem("email");
-   
-    setEmail2(e);
+        const fetchData = async () => {
+            try {
+                const e = sessionStorage.getItem("email");
+                setEmail2(e);
+                if (!sessionStorage.getItem("emailstatus")){
+                    router.push("/");
+                }
+                // Check if userData is available before accessing it
+                if (userData && userData.users) {
+                    const userDataWithEmail = userData.users.find(user => user.EmailId === e);
+                    if (userDataWithEmail) {
+                        const registerNumber = userDataWithEmail.RegisterNumber;
+                        const studentName = userDataWithEmail.StudentName;
+                        setStdName(studentName);
     
-    // Check if userData is available before accessing it
-    if (userData && userData.users) {
-        const userDataWithEmail = userData.users.find(user => user.EmailId === e);
-        if (userDataWithEmail) {
-            const registerNumber = userDataWithEmail.RegisterNumber;
-            const studentName = userDataWithEmail.StudentName;
-            
-            
-            const ff = studentName+"9999"+registerNumber;
-            setEmail1(ff); // Store register number in state
-            
-        } else {
-            console.log("Register number not found for the provided email.");
-        }
-    } else {
-        console.log("userData is undefined or does not contain the expected structure.");
-    }
-}, []);
+                        const ff = studentName + "9999" + registerNumber;
+                        setEmail1(ff); // Store register number in state
+                    } else {
+                        console.log("Register number not found for the provided email.");
+                    }
+                } else {
+                    console.log("userData is undefined or does not contain the expected structure.");
+                }
+            } catch (error) {
+                console.error("Error fetching user data:", error);
+            }
+        };
+    
+        fetchData();
+    }, []);
 
 /* if(email1){ const userDataWithEmail = userData.users.find(user => user.EmailId === email1);
 const studentName = userDataWithEmail.StudentName; setStdName(studentName); return stdname
@@ -157,15 +165,20 @@ const studentName = userDataWithEmail.StudentName; setStdName(studentName); retu
         // Handle next button click, navigate or perform any other action
        
     };
-    const handleNameSubmit = () => {
-        setW(true);
 
-    };
     const Reset = () => {
         setSubDomain1("");
         setSubDomain2("");
         setCon1(false);
         setCon2(false);
+    };
+    const back = () => {
+        setSubDomain1("");
+        setSubDomain2("");
+        setCon1(false);
+        setCon2(false);
+        setNextClicked(!nextClicked);
+        setSelectionDisabled(false);
     };
     const [subCon1, setCon1] = useState(false);
     const [subCon2, setCon2] = useState(false);
@@ -289,21 +302,13 @@ const studentName = userDataWithEmail.StudentName; setStdName(studentName); retu
 
         </div>
     ); */
-    return (<>{W? (
-    <div className="w-full bg-white text-white h-fit sm:h-[100vh] ">
-    <section id='sec1' className='flex flex-col gap-5 h-[100%]'>
-        <div className='text-blue-400  h-fit w-full '>
-            <TypeAnimation className="flex justify-center font-mono font-medium text-2xl sm:text-3xl"
-                sequence={[
-                    `hi ${stdname},`,
-                    1000,
-                ]}
-                speed={75}
-                style={{ display: 'flex', whiteSpace: 'pre-line', textAlign: 'center' }}
-                repeat={null}
-                cursor={false}
-            />
 
+    return (
+    <div className="w-full bg-black text-white h-fit sm:h-[100vh] ">
+    <section id='sec1' className='flex flex-col gap-5 h-[100%]'>
+                <div className='flex justify-center '><h1 className=' items-end'>HI {stdname}</h1></div>
+        <div className='text-blue-400  h-fit w-full flex justify-center '>
+            
             <TypeAnimation className="flex  justify-center font-mono font-medium text-1xl sm:text-2xl"
                 sequence={[
                     'Welcome  to our community,',
@@ -316,6 +321,7 @@ const studentName = userDataWithEmail.StudentName; setStdName(studentName); retu
                 repeat={null}
                 cursor={false}
             />
+            
         </div>
         <div className="flex  justify-center  h-fit sm:items-center sm:h-[70%]">
             <div className="relative flex flex-col  items-center w-[80%] h-fit gap-10 sm:flex-row sm:items-start sm:h-full sm:justify-evenly ">
@@ -325,7 +331,7 @@ const studentName = userDataWithEmail.StudentName; setStdName(studentName); retu
                     className={
                         nextClicked
                             ? (management ? 'bg-gray-300 font-bold text-black text-xl h-fit w-full z-0 transform rotate-y-3 transition-all duration-500 rounded-xl sm:h-full' : 'z-[-200000] transition-all delay-100 absolute hidden')
-                            : (management ? 'bg-green-300 font-bold text-black text-xl h-fit w-1/2 z-10 shadow-stone-950 shadow-2xl transform rotate-y-6 transition-all duration-500 rounded-3xl  sm:h-[75%]' : 'bg-gray-300 font-bold text-black text-xl h-fit w-1/2 z-0 transform rotate-y-3 transition-all duration-500 rounded-xl sm:w-1/4 sm:h-[75%]')
+                            : (management ? 'bg-green-300 font-bold text-black text-xl h-fit w-1/2 z-10 shadow-green-400 shadow-md transform rotate-y-6 transition-all duration-500 rounded-3xl  sm:h-[75%]' : 'bg-gray-300 font-bold text-black text-xl h-fit w-1/2 z-0 transform rotate-y-3 transition-all duration-500 rounded-xl sm:w-1/4 sm:h-[75%]')
                     }
                 >
                     <h1 className={nextClicked ? '' : ''}>management</h1>
@@ -358,7 +364,7 @@ const studentName = userDataWithEmail.StudentName; setStdName(studentName); retu
                     className={
                         nextClicked
                             ? (technical ? 'bg-gray-300 font-bold text-black text-xl h-[75%] w-full z-0 transform rotate-y-3 transition-all duration-500 rounded-xl sm:h-full' : 'z-[-200000] transition-all delay-100 absolute hidden')
-                            : (technical ? 'bg-green-300 font-bold text-black text-xl h-fit w-1/2 z-10 shadow-stone-950 shadow-2xl transform rotate-y-6 transition-all duration-500 rounded-3xl  sm:h-[75%]' : 'bg-gray-300 font-bold text-black text-xl h-fit w-1/2 z-0 transform rotate-y-3 transition-all duration-500 rounded-xl sm:w-1/4 sm:h-[75%]')
+                            : (technical ? 'bg-green-300 font-bold text-black text-xl h-fit w-1/2 z-10 shadow-green-400 shadow-md transform rotate-y-6 transition-all duration-500 rounded-3xl  sm:h-[75%]' : 'bg-gray-300 font-bold text-black text-xl h-fit w-1/2 z-0 transform rotate-y-3 transition-all duration-500 rounded-xl sm:w-1/4 sm:h-[75%]')
                     }
                 >
                     <h1 className={nextClicked ? '' : ''}>technical</h1>
@@ -412,7 +418,7 @@ const studentName = userDataWithEmail.StudentName; setStdName(studentName); retu
                     className={
                         nextClicked
                             ? (design ? 'bg-gray-300 font-bold text-black text-xl h-[75%] w-full z-0 transform rotate-y-3 transition-all duration-500 rounded-xl sm:h-full' : 'z-[-200000] transition-all delay-100 absolute hidden')
-                            : (design ? 'bg-green-300 font-bold text-black text-xl h-fit w-1/2 z-10 shadow-stone-950 shadow-2xl transform rotate-y-6 transition-all duration-500 rounded-3xl sm:h-[75%]' : 'bg-gray-300 font-bold text-black text-xl h-fit w-1/2 z-0 transform rotate-y-3 transition-all duration-500 rounded-xl sm:w-1/4 sm:h-[75%]')
+                            : (design ? 'bg-green-300 font-bold text-black text-xl h-fit w-1/2 z-10 shadow-green-400 shadow-md transform rotate-y-6 transition-all duration-500 rounded-3xl sm:h-[75%]' : 'bg-gray-300 font-bold text-black text-xl h-fit w-1/2 z-0 transform rotate-y-3 transition-all duration-500 rounded-xl sm:w-1/4 sm:h-[75%]')
                     }
                 >
                     <h1>design</h1>
@@ -465,28 +471,16 @@ const studentName = userDataWithEmail.StudentName; setStdName(studentName); retu
                     className="   bg-green-400 text-white px-5 py-5 rounded-md ">
                     reset
                 </button>)}
+                {nextClicked && (
+                <button onClick={back}   // Disable the button when selection is disabled
+                    className="   bg-green-400 text-white px-5 py-5 rounded-md ">
+                    go back
+                </button>)}
             </div>
     </section>
-</div>):(<div className="flex bg-white flex-col items-center justify-center h-screen text-black">
-    <h1 className="text-3xl  font-bold mb-4">Welcome! Please enter your name:</h1>
-    <input
-        type="text"
-        value={email}
-        onChange={(e) => setUsername(e.target.value)}
-        placeholder="Your Name"
-        className="border border-gray-400 rounded-md px-3 py-2 mb-4"
-    />
-    {subCon1 && subCon2 (<button
-        onClick={handleNameSubmit}
-        className="bg-green-500 text-white px-4 py-2 rounded-md hover:bg-green-600 transition-colors"
-    >
-        Submit
-    </button>)}
-</div>)
+</div>
+    
 
-    }
-
-    </>
         
     );
     
