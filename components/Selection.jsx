@@ -248,7 +248,7 @@ const Selection = () => {
                                     {nextClicked ? (
                                         <div
                                             className=" h-1/2 overflow-x-hidden
-                         relative  flex justify-center items-center "
+                         relative  flex justify-center items-center p-5 "
                                         >
                                             <ul className="flex flex-col items-center gap-4 ">
                                                 <button
@@ -455,7 +455,7 @@ const Selection = () => {
                                         }
                                     />
                                     {nextClicked && (
-                                        <div className="h-1/2 overflow-x-hidden relative flex justify-center items-center">
+                                        <div className="h-1/2 overflow-x-hidden relative flex justify-center items-center p-5">
                                             <ul className="flex flex-col items-center gap-4">
                                                 <button
                                                     onClick={() =>
