@@ -10,8 +10,6 @@ const ThankYouPage = () => {
         const timer = setTimeout(() => {
             router.push('/');
         }, 4000);
-
-        // Clear the timer if the component is unmounted
         return () => clearTimeout(timer);
     }, [router]);
 
