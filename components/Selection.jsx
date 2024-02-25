@@ -71,6 +71,7 @@ const studentName = userDataWithEmail.StudentName; setStdName(studentName); retu
 
 
     const submit = async () => {
+        setLoading(true);
         const userSnapshot = await get(ref(db, `UserNew/${email}`));
     
         if (userSnapshot) {
@@ -85,7 +86,7 @@ const studentName = userDataWithEmail.StudentName; setStdName(studentName); retu
         await set(domainRef2, {
             Subdomain2: subDomain2,
         });
-        setLoading(false);
+        
         router.push('/thank');
     };
 
@@ -172,6 +173,11 @@ const studentName = userDataWithEmail.StudentName; setStdName(studentName); retu
         setSubDomain2("");
         setCon1(false);
         setCon2(false);
+        setDomain1("");
+        setDomain2("");
+        setManagement(false);
+        setTechnical(false);
+        setDesign(false);
         setNextClicked(!nextClicked);
         setSelectionDisabled(false);
     };
@@ -454,25 +460,28 @@ const studentName = userDataWithEmail.StudentName; setStdName(studentName); retu
         </div>
         <div className='w-full h-[10%] flex flex-row justify-center items-center gap-5 pb-5 '>
                 {!nextClicked && (
-                    <button onClick={handleNext} disabled={selectionDisabled} // Disable the button when selection is disabled
-                        className="   bg-green-400 text-white px-5 py-5 rounded-md ">
+                    <button 
+                        onClick={handleNext} 
+                        disabled={!((management && (technical || design)) || (technical && (management || design)) || (design && (management || technical))) || selectionDisabled}
+                        className={`px-6 py-3 rounded-md font-semibold ${((management && (technical || design)) || (technical && (management || design)) || (design && (management || technical))) && !selectionDisabled ? 'bg-green-400 text-white hover:bg-green-500' : 'bg-gray-300 text-gray-600 cursor-not-allowed'}`}
+                    >
                         Next
-                    </button>)
-                }
+                    </button>
+                )}
                 {nextClicked && subCon1 && subCon2 && (
                     <button onClick={submit}   // Disable the button when selection is disabled
-                        className="   bg-green-400 text-white px-5 py-5 rounded-md ">
+                        className="   bg-green-400 text-white px-6 py-3 rounded-md font-semibold ">
                         submit
                     </button>)
                 }
                 {nextClicked && (
                 <button onClick={Reset}   // Disable the button when selection is disabled
-                    className="   bg-green-400 text-white px-5 py-5 rounded-md ">
+                    className="   bg-green-400 text-white px-6 py-3 rounded-md font-semibold ">
                     reset
                 </button>)}
                 {nextClicked && (
                 <button onClick={back}   // Disable the button when selection is disabled
-                    className="   bg-green-400 text-white px-5 py-5 rounded-md ">
+                    className="   bg-green-400 text-white px-6 py-3 rounded-md font-semibold ">
                     go back
                 </button>)}
             </div>

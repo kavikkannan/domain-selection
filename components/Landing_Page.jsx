@@ -45,12 +45,12 @@ const LandingPage = () => {
             ) : (
                 <div className="absolute top-0 -z-10 w-full bg-gray-800 text-white min-h-screen flex items-center justify-center ">
 
-                    <div className="absolute left-0  w-1/2 animate-roaming-container">
+                    <div className="absolute left-[99999999] sm:left-0  w-1/2 animate-roaming-container">
                         {/* <img className='roaming-symbol w-20 h-20' src="/images/login_bg2.jpg" alt="" />
                 <img className='roaming-symbol w-20 h-20' src="/images/login_bg2.jpg" alt="" /> */}
-                        <Lottie animationData={robo_animation} />
+                        <Lottie animationData={robo_animation}  />
                     </div>
-                    <div className=" absolute right-4 max-w-4xl bg-gray-900 p-8 shadow-md rounded-md  z-10">
+                    <div className=" absolute right-4  max-w-4xl bg-gray-900 p-8 shadow-md rounded-md  z-10">
                         <h1 className="text-4xl font-bold mb-8 text-center text-blue-500">Welcome to ISA International Chapter</h1>
 
                         <p className="text-lg text-gray-400 mb-8 text-center">
