@@ -41,27 +41,28 @@ const LandingPage = () => {
             {loading ? (
                 <Loading /> 
             ) : (
-                <div className="absolute top-0 -z-10 w-full bg-gray-800 text-white min-h-screen flex items-center justify-center ">
+              
+                <div className="w-full bg-gray-800 text-white min-h-screen flex flex-col sm:flex-row  items-center justify-evenly">
 
-                    <div className="absolute left-[99999999] sm:left-0  w-1/2 animate-roaming-container">
-                        <Lottie animationData={robo_animation}  />
+                    <div className="w-full max-w-2xl mb-8">
+                        <Lottie animationData={robo_animation} />
                     </div>
-                    <div className=" absolute right-4  max-w-4xl bg-gray-900 p-8 shadow-md rounded-md  z-10">
-                        <h1 className="text-4xl font-bold mb-8 text-center text-blue-500">Welcome to ISA International Chapter</h1>
+                    <div className="max-w-md bg-gray-900 p-8 shadow-md rounded-md">
+                        <h1 className="text-3xl font-bold mb-4 text-center text-blue-500">Welcome to ISA International Chapter</h1>
 
                         <p className="text-lg text-gray-400 mb-8 text-center">
                             Unlock the Power of Automation Worldwide
                         </p>
 
                         <div className="mb-8">
-                            <h2 className="text-2xl font-bold mb-4 text-blue-500">About Us</h2>
+                            <h2 className="text-xl font-bold mb-4 text-blue-500">About Us</h2>
                             <p className="text-gray-400 text-center">
                                 ISA is a renowned global organization dedicated to promoting and advancing the field of automation and control systems. With a rich history spanning decades, our International Chapter serves as a vibrant hub for professionals seeking to stay at the forefront of technological advancements.
                             </p>
                         </div>
 
                         <div className="mb-8">
-                            <h2 className="text-2xl font-bold mb-4 text-blue-500">What Sets Us Apart</h2>
+                            <h2 className="text-xl font-bold mb-4 text-blue-500">What Sets Us Apart</h2>
                             <ul className="list-disc pl-6  text-gray-400">
                                 <li>
                                     <strong className=' font-extrabold text-blue-200 font'>Global Network:</strong> Join a diverse and dynamic community of professionals, researchers, and industry leaders from every corner of the world. Benefit from cross-cultural collaboration, knowledge exchange, and networking opportunities.
@@ -75,7 +76,7 @@ const LandingPage = () => {
                             </ul>
                         </div>
                         <div className="text-center">
-                            <button onClick={handleSignIn} className="bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-blue-600 transition duration-300">
+                            <button onClick={handleSignIn} className="bg-blue-500 text-white py-3 px-6 rounded-md hover:bg-blue-600 transition duration-300">
                                 Sign in with VIT student
                             </button>
                             {errorMessage && <p className="text-red-500 mt-2">{errorMessage}</p>}
