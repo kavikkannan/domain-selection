@@ -44,10 +44,10 @@ const LandingPage = () => {
               
                 <div className="w-full bg-gray-800 text-white min-h-screen flex flex-col sm:flex-row  items-center justify-evenly">
 
-                    <div className="w-full max-w-2xl mb-8">
+                    <div className="absolute  z-[-1] sm:relative sm:z-0 w-full max-w-2xl mb-8">
                         <Lottie animationData={robo_animation} />
                     </div>
-                    <div className="max-w-md bg-gray-900 p-8 shadow-md rounded-md">
+                    <div className="  max-w-md bg-transparent bg-gray-900 p-8 shadow-md rounded-md ">
                         <h1 className="text-3xl font-bold mb-4 text-center text-blue-500">Welcome to ISA International Chapter</h1>
 
                         <p className="text-lg text-gray-400 mb-8 text-center">
