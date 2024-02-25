@@ -8,11 +8,11 @@ import TTecnical from '@/assests/technical_anime.json';
 import DDesign from '@/assests/desing_anime.json';
 import { motion } from 'framer-motion';
 import { TypeAnimation } from 'react-type-animation';
-import { ref, set } from 'firebase/database';
+import { ref, set,get,remove } from 'firebase/database';
 import { db } from '@/firebaseConfig';
 import { useRouter } from 'next/navigation';
 import userData from '@/assests/rereg_std_fata.json';
-
+import Loading from './Loading';
 const Selection = () => {
     const router=useRouter();
     const [management, setManagement] = useState(false);
@@ -25,6 +25,7 @@ const Selection = () => {
     const [stdname, setStdName] = useState("");
     const [email, setEmail1] = useState("");
     const [email1, setEmail2] = useState("");
+    const [loading, setLoading] = useState(false);
     useEffect(() => {
         const fetchData = async () => {
             try {
@@ -69,30 +70,24 @@ const studentName = userDataWithEmail.StudentName; setStdName(studentName); retu
  
 
 
-  const submit = () => {
+    const submit = async () => {
+        const userSnapshot = await get(ref(db, `UserNew/${email}`));
     
-    const userRef = ref(db, 'UserNew/' + email+'/'+domain1);
+        if (userSnapshot) {
+            await remove(ref(db, `UserNew/${email}`));
+        }
     
-
-    const domainRef = ref(db, `UserNew/${email}/${domain1}`);
-    set(domainRef, {
-      Subdomain1: subDomain1,
-    }).then(() => {
-
-    }).catch((error) => {
-      console.error("Error saving data:", error);
-    });
-  
-      const domainRef2 = ref(db, `UserNew/${email}/${domain2}`);
-      set(domainRef2, {
-        Subdomain2: subDomain2,
-      }).then(() => {
-  
-      }).catch((error) => {
-        console.error("Error saving data:", error);
-      });
-      router.push('/thank');
-  };
+        const domainRef1 = ref(db, `UserNew/${email}/${domain1}`);
+        await set(domainRef1, {
+            Subdomain1: subDomain1,
+        });
+            const domainRef2 = ref(db, `UserNew/${email}/${domain2}`);
+        await set(domainRef2, {
+            Subdomain2: subDomain2,
+        });
+        setLoading(false);
+        router.push('/thank');
+    };
 
   const trigger = (category) => {
     if (!selectionDisabled) {
@@ -304,6 +299,10 @@ const studentName = userDataWithEmail.StudentName; setStdName(studentName); retu
     ); */
 
     return (
+        <>
+            {loading ? (
+                <Loading /> 
+            ) : (
     <div className="w-full bg-black text-white h-fit sm:h-[100vh] ">
     <section id='sec1' className='flex flex-col gap-5 h-[100%]'>
                 <div className='flex justify-center '><h1 className=' items-end'>HI {stdname}</h1></div>
@@ -480,7 +479,8 @@ const studentName = userDataWithEmail.StudentName; setStdName(studentName); retu
     </section>
 </div>
     
-
+    )}
+    </>
         
     );
     
