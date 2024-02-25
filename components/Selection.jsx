@@ -198,7 +198,7 @@ const Selection = () => {
             ) : (
                 <div className="w-full bg-black text-white h-fit sm:h-[100vh] ">
                     <section id="sec1" className="flex flex-col gap-5 h-[100%]">
-                        <div className="flex justify-center ">
+                        <div className="flex justify-center p-5 ">
                             <h1 className=" items-end">HI {stdname}</h1>
                         </div>
                         <div className="text-blue-400  h-fit w-full flex justify-center ">
@@ -207,7 +207,7 @@ const Selection = () => {
                                 sequence={[
                                     'Welcome  to our community,',
                                     1000,
-                                    `Welcome to our community,\nwe are happy to introduce our domains!!`,
+                                    `Welcome to our community,\nWe are happy to introduce our domains !`,
                                     1000,
                                 ]}
                                 speed={75}
@@ -237,7 +237,7 @@ const Selection = () => {
                                     }
                                 >
                                     <h1 className={nextClicked ? '' : ''}>
-                                        management
+                                        Management
                                     </h1>
                                     <Lottie
                                         animationData={MManagement}
@@ -265,8 +265,8 @@ const Selection = () => {
                                                         subDomain2.includes(
                                                             'management and finance',
                                                         )
-                                                            ? 'bg-green-400 text-white shadow-lg'
-                                                            : 'bg-blue-400 text-white'
+                                                            ? 'bg-[#367d3d] text-black border-transparent border-2 hover:text-white hover:bg-[#226029] hover:border-b-black hover:scale-105 shadow-lg transition-all delay-50 duration-200 ease-in-out'
+                                                            : 'bg-cyan-600 text-white shadow-md hover:bg-indigo-800 border-transparent border-2 hover:border-b-black hover:scale-105 hover:text-black transition-all delay-50 duration-200 ease-in-out hover:shadow-lg '
                                                     }`}
                                                 >
                                                     Management and Finance
@@ -286,8 +286,8 @@ const Selection = () => {
                                                         subDomain2.includes(
                                                             'editorial and publicity',
                                                         )
-                                                            ? 'bg-green-400 text-white shadow-lg'
-                                                            : 'bg-blue-400 text-white'
+                                                            ? 'bg-[#367d3d] text-black border-transparent border-2 hover:text-white hover:bg-[#226029] hover:border-b-black hover:scale-105 shadow-lg transition-all delay-50 duration-200 ease-in-out'
+                                                            : 'bg-cyan-600 text-white shadow-md hover:bg-indigo-800 border-transparent border-2 hover:border-b-black hover:scale-105 hover:text-black transition-all delay-50 duration-200 ease-in-out hover:shadow-lg '
                                                     }`}
                                                 >
                                                     Editorial and Publicity
@@ -312,7 +312,7 @@ const Selection = () => {
                                     }
                                 >
                                     <h1 className={nextClicked ? '' : ''}>
-                                        technical
+                                        Technical
                                     </h1>
                                     <Lottie
                                         animationData={TTecnical}
@@ -321,8 +321,8 @@ const Selection = () => {
                                         }
                                     />
                                     {nextClicked && (
-                                        <div className="h-1/2 overflow-x-hidden relative flex justify-center items-center">
-                                            <ul className="flex flex-col items-center gap-4">
+                                        <div className="h-1/2 overflow-x-hidden relative flex flex-col gap-4 justify-center items-center p-5">
+                                            <ul className="flex flex-row items-center gap-4">
                                                 <button
                                                     onClick={() =>
                                                         handleOptionClick(
@@ -337,8 +337,8 @@ const Selection = () => {
                                                         subDomain2.includes(
                                                             'Web Dev',
                                                         )
-                                                            ? 'bg-green-400 text-white shadow-lg'
-                                                            : 'bg-blue-400 text-white'
+                                                            ? 'bg-[#367d3d] text-black border-transparent border-2 hover:text-white hover:bg-[#226029] hover:border-b-black hover:scale-105 shadow-lg transition-all delay-50 duration-200 ease-in-out'
+                                                            : 'bg-cyan-600 text-white shadow-md hover:bg-indigo-800 border-transparent border-2 hover:border-b-black hover:scale-105 hover:text-black transition-all delay-50 duration-200 ease-in-out hover:shadow-lg '
                                                     }`}
                                                 >
                                                     Web Dev
@@ -358,8 +358,8 @@ const Selection = () => {
                                                         subDomain2.includes(
                                                             'App Dev',
                                                         )
-                                                            ? 'bg-green-400 text-white shadow-lg'
-                                                            : 'bg-blue-400 text-white'
+                                                            ? 'bg-[#367d3d] text-black border-transparent border-2 hover:text-white hover:bg-[#226029] hover:border-b-black hover:scale-105 shadow-lg transition-all delay-50 duration-200 ease-in-out'
+                                                            : 'bg-cyan-600 text-white shadow-md hover:bg-indigo-800 border-transparent border-2 hover:border-b-black hover:scale-105 hover:text-black transition-all delay-50 duration-200 ease-in-out hover:shadow-lg '
                                                     }`}
                                                 >
                                                     App Dev
@@ -379,13 +379,14 @@ const Selection = () => {
                                                         subDomain2.includes(
                                                             'ai/ml',
                                                         )
-                                                            ? 'bg-green-400 text-white shadow-lg'
-                                                            : 'bg-blue-400 text-white'
+                                                            ? 'bg-[#367d3d] text-black border-transparent border-2 hover:text-white hover:bg-[#226029] hover:border-b-black hover:scale-105 shadow-lg transition-all delay-50 duration-200 ease-in-out'
+                                                            : 'bg-cyan-600 text-white shadow-md hover:bg-indigo-800 border-transparent border-2 hover:border-b-black hover:scale-105 hover:text-black transition-all delay-50 duration-200 ease-in-out hover:shadow-lg '
                                                     }`}
                                                 >
                                                     AI/ML
                                                 </button>
-
+                                            </ul>
+                                            <ul className="flex flex-row items-center gap-4">
                                                 <button
                                                     onClick={() =>
                                                         handleOptionClick(
@@ -400,8 +401,8 @@ const Selection = () => {
                                                         subDomain2.includes(
                                                             'iot',
                                                         )
-                                                            ? 'bg-green-400 text-white shadow-lg'
-                                                            : 'bg-blue-400 text-white'
+                                                            ? 'bg-[#367d3d] text-black border-transparent border-2 hover:text-white hover:bg-[#226029] hover:border-b-black hover:scale-105 shadow-lg transition-all delay-50 duration-200 ease-in-out'
+                                                            : 'bg-cyan-600 text-white shadow-md hover:bg-indigo-800 border-transparent border-2 hover:border-b-black hover:scale-105 hover:text-black transition-all delay-50 duration-200 ease-in-out hover:shadow-lg '
                                                     }`}
                                                 >
                                                     IOT
@@ -421,8 +422,8 @@ const Selection = () => {
                                                         subDomain2.includes(
                                                             'System Design',
                                                         )
-                                                            ? 'bg-green-400 text-white shadow-lg'
-                                                            : 'bg-blue-400 text-white'
+                                                            ? 'bg-[#367d3d] text-black border-transparent border-2 hover:text-white hover:bg-[#226029] hover:border-b-black hover:scale-105 shadow-lg transition-all delay-50 duration-200 ease-in-out'
+                                                            : 'bg-cyan-600 text-white shadow-md hover:bg-indigo-800 border-transparent border-2 hover:border-b-black hover:scale-105 hover:text-black transition-all delay-50 duration-200 ease-in-out hover:shadow-lg '
                                                     }`}
                                                 >
                                                     System Design
@@ -470,8 +471,8 @@ const Selection = () => {
                                                         subDomain2.includes(
                                                             'Graphic',
                                                         )
-                                                            ? 'bg-green-400 text-white shadow-lg'
-                                                            : 'bg-blue-400 text-white'
+                                                            ? 'bg-[#367d3d] text-black border-transparent border-2 hover:text-white hover:bg-[#226029] hover:border-b-black hover:scale-105 shadow-lg transition-all delay-50 duration-200 ease-in-out'
+                                                            : 'bg-cyan-600 text-white shadow-md hover:bg-indigo-800 border-transparent border-2 hover:border-b-black hover:scale-105 hover:text-black transition-all delay-50 duration-200 ease-in-out hover:shadow-lg '
                                                     }`}
                                                 >
                                                     Graphic Design
@@ -491,8 +492,8 @@ const Selection = () => {
                                                         subDomain2.includes(
                                                             'Video',
                                                         )
-                                                            ? 'bg-green-400 text-white shadow-lg'
-                                                            : 'bg-blue-400 text-white'
+                                                            ? 'bg-[#367d3d] text-black border-transparent border-2 hover:text-white hover:bg-[#226029] hover:border-b-black hover:scale-105 shadow-lg transition-all delay-50 duration-200 ease-in-out'
+                                                            : 'bg-cyan-600 text-white shadow-md hover:bg-indigo-800 border-transparent border-2 hover:border-b-black hover:scale-105 hover:text-black transition-all delay-50 duration-200 ease-in-out hover:shadow-lg '
                                                     }`}
                                                 >
                                                     Video Editing
@@ -512,8 +513,8 @@ const Selection = () => {
                                                         subDomain2.includes(
                                                             'cad',
                                                         )
-                                                            ? 'bg-green-400 text-white shadow-lg'
-                                                            : 'bg-blue-400 text-white'
+                                                            ? 'bg-[#367d3d] text-black border-transparent border-2 hover:text-white hover:bg-[#226029] hover:border-b-black hover:scale-105 shadow-lg transition-all delay-50 duration-200 ease-in-out'
+                                                            : 'bg-cyan-600 text-white shadow-md hover:bg-indigo-800 border-transparent border-2 hover:border-b-black hover:scale-105 hover:text-black transition-all delay-50 duration-200 ease-in-out hover:shadow-lg '
                                                     }`}
                                                 >
                                                     Technical Design-CAD

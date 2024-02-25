@@ -1,17 +1,17 @@
-import React, { useEffect } from 'react';
-import { useRouter } from 'next/navigation';
-import Lottie from 'lottie-react';
-import TTecnical from '@/assests/thank.json';
+import React, { useEffect } from 'react'
+import { useRouter } from 'next/navigation'
+import Lottie from 'lottie-react'
+import TTecnical from '@/assests/thank.json'
 
 const ThankYouPage = () => {
-    const router = useRouter();
+    const router = useRouter()
 
     useEffect(() => {
         const timer = setTimeout(() => {
-            router.push('/');
-        }, 4000);
-        return () => clearTimeout(timer);
-    }, [router]);
+            router.push('/')
+        }, 4000)
+        return () => clearTimeout(timer)
+    }, [router])
 
     return (
         <div className="flex flex-col items-center justify-center h-screen">
@@ -21,7 +21,7 @@ const ThankYouPage = () => {
                 <Lottie animationData={TTecnical} loop={false} />
             </div>
         </div>
-    );
-};
+    )
+}
 
-export default ThankYouPage;
+export default ThankYouPage
