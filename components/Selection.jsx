@@ -326,7 +326,7 @@ const Selection = () => {
 
                             <button 
                                 onClick={() => handleOptionClick("design", 'cad')} 
-                                className={`px-4 py-2 rounded-md shadow-md ${subDomain1.includes('solid works') || subDomain2.includes('solid works') ? 'bg-green-400 text-white shadow-lg' : 'bg-blue-400 text-white'}`}
+                                className={`px-4 py-2 rounded-md shadow-md ${subDomain1.includes('solid works') || subDomain2.includes('cad') ? 'bg-green-400 text-white shadow-lg' : 'bg-blue-400 text-white'}`}
                             >
                                 Technical Design-CAD
                             </button></ul>
