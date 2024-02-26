@@ -7,7 +7,6 @@ import { signInWithPopup } from 'firebase/auth'
 import userData from '@/assests/rereg_std_fata.json'
 import Loading from './Loading'
 import { LampContainer } from './ui/Lamp'
-import { MaskContainer } from './ui/Mask'
 
 const LandingPage = () => {
     const router = useRouter()
@@ -61,10 +60,7 @@ const LandingPage = () => {
                     </div>
                     <div className="  max-w-md bg-transparent bg-gray-900 p-8 shadow-md rounded-md ">
                         <h1 className="text-3xl font-bold mb-4 text-center text-blue-500">
-                            {/* <MaskContainer> */}
-                            Welcome to the Internation Society of Automation
-                            (ISA)
-                            {/* </MaskContainer> */}
+                            Welcome to ISA International Chapter
                         </h1>
 
                         <p className="text-lg text-gray-400 mb-8 text-center">

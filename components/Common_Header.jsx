@@ -30,7 +30,7 @@ const Commonheader = () => {
                 exit="exit"
                 variants={headerVariants}
             >
-                <header className="relative  w-full bg-white text-blue-800 p-4 flex items-center justify-between">
+                <header className="relative  w-full bg-white text-blue-800 p-4 flex items-center justify-between z-100">
                     <div className="flex items-center">
                         <img
                             src="/images/isa_logo.jpg"
