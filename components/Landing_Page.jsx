@@ -33,7 +33,13 @@ const LandingPage = () => {
                     (user) => user.EmailId === signedInEmail,
                 )
                 if (userDataWithEmail) {
-                    router.push('/Domain_Selection')
+        
+                    const isAdmin = adminData.admins.includes(signedInEmail);
+                    if (isAdmin) {
+                        router.push('/show_admin');
+                    } else {
+                        router.push('/show_mem');
+                    }
                 } else {
                     sessionStorage.setItem('email', null)
                     sessionStorage.setItem('emailstatus', false)

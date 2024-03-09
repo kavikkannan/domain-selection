@@ -2,6 +2,11 @@
     "users": [
         {
             "RegisterNumber": "21BCE0822",
+            "StudentName": "kavi",
+            "EmailId": "kavikkannank@gmail.com"
+        },
+        {
+            "RegisterNumber": "21BCE0822",
             "StudentName": "ANTAREEP MAJUMDAR",
             "EmailId": "antareep.majumdar2021@vitstudent.ac.in"
         },
