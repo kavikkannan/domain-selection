@@ -110,9 +110,7 @@ const Navbar = () => {
                             textDecoration: 'none',
                         }}
                     >
-                        <button className="px-4 py-2 rounded-md border border-neutral-300 bg-neutral-100 hover:bg-cyan-500 text-black text-sm hover:-translate-y-1 transform transition duration-200 hover:shadow-md">
-                            Sign In
-                        </button>
+                        
                     </a>
                 </div>
             </div>

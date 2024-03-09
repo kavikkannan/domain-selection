@@ -64,7 +64,7 @@ const ShowMemberTable = () => {
     };
 
     return (
-        <div >
+        <div>
             <div className='flex justify-center pt-2 pb-2 rounded-3xl text-black'>
                 <input 
                     className=''
@@ -74,29 +74,29 @@ const ShowMemberTable = () => {
                     onChange={handleSearch}
                 />
             </div>
-            <table className='w-full' style={{ borderSpacing: '10px' }}>
+            <table className='w-full' style={{ borderSpacing: '10px', border: '2px solid green' }}>
                 <thead>
                     <tr>
-                        <th>Username</th>
-                        <th>Technical</th>
-                        <th>Management</th>
-                        <th>Design</th>
+                        <th style={{ borderSpacing: '10px', border: '2px solid green' }}>Username</th>
+                        <th style={{ borderSpacing: '10px', border: '2px solid green' }}>Technical</th>
+                        <th style={{ borderSpacing: '10px', border: '2px solid green' }}>Management</th>
+                        <th style={{ borderSpacing: '10px', border: '2px solid green' }}>Design</th>
                     </tr>
                 </thead>
-                <tbody className=' '>
+                <tbody style={{ borderSpacing: '10px', border: '2px solid green' }}>
                     {filteredUsers.map((user, index) => (
                         <tr key={index} className=' '>
-                            <td>{user.username}</td>
-                            <td>{hasDomain(user, 'technical') ? renderDateTime(user.domains.technical.dateTime) : "Not registered"}</td>
-                            <td>{hasDomain(user, 'management') ? renderDateTime(user.domains.management.dateTime) : "Not registered"}</td>
-                            <td>{hasDomain(user, 'design') ? renderDateTime(user.domains.design.dateTime) : "Not registered"}</td>
+                            
+                            <td className='pl-3' style={{ borderSpacing: '10px', border: '2px solid green' }}>{user.username}</td>
+                            <td style={{ borderSpacing: '10px', border: '2px solid green' }}><center>{hasDomain(user, 'technical') ? renderDateTime(user.domains.technical.dateTime) : "Not registered"}</center></td>
+                            <td style={{ borderSpacing: '10px', border: '2px solid green' }}><center>{hasDomain(user, 'management') ? renderDateTime(user.domains.management.dateTime) : "Not registered"}</center></td>
+                            <td style={{ borderSpacing: '10px', border: '2px solid green' }}><center>{hasDomain(user, 'design') ? renderDateTime(user.domains.design.dateTime) : "Not registered"}</center></td>
                         </tr>
                     ))}
                 </tbody>
             </table>
         </div>
     );
-
 };
 
 export default ShowMemberTable;
