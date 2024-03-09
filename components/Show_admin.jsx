@@ -30,12 +30,12 @@ const UserDomainTable = () => {
         const fetchData = async () => {
             try {
                 const usersSnapshot = await get(query(ref(db, 'UserNew'), orderByKey()));
-
+    
                 if (usersSnapshot.exists()) {
                     const usersData = [];
                     usersSnapshot.forEach((snapshot) => {
                         const userData = snapshot.val();
-                        const username = formatUsername(snapshot.key);
+                        const username = snapshot.key;
                         const userDataWithDateTime = {};
                         Object.keys(userData).forEach((domain) => {
                             const subdomain = userData[domain];
@@ -56,9 +56,21 @@ const UserDomainTable = () => {
                 console.error('Error fetching user data:', error);
             }
         };
-
+    
         fetchData();
-    }, []);
+    }, [filteredUsers]); // Trigger fetch data when filteredUsers state changes
+    
+    const handleUpdateDateTime = async (username, domain) => {
+        const dateTime = prompt('Enter time and date (DD-MM HH:MM):');
+        if (dateTime) {
+            const userRef = ref(db, `UserNew/${username}/${domain}/dateTime`);
+            await update(userRef, { timeAndDate: dateTime });
+            // Refresh table data by updating filteredUsers state
+            setFilteredUsers([]); // Clear filteredUsers state
+        }
+    };
+    
+    
 
     useEffect(() => {
         const filteredResults = users.filter((user) => {
@@ -77,13 +89,7 @@ const UserDomainTable = () => {
     };
 
   
-    const handleUpdateDateTime = (username, domain) => {
-        const dateTime = prompt('Enter time and date (DD-MM HH:MM):');
-        if (dateTime) {
-            const userRef = ref(db, `UserNew/${username}/${domain}/dateTime`);
-            update(userRef, { timeAndDate: dateTime });
-        }
-    };
+
 
     
     const formatUsername = (username) => {
@@ -107,64 +113,88 @@ const UserDomainTable = () => {
                     </div>
                     <table className='w-full' style={{ borderSpacing: '10px' }}>
                         <thead>
-                            <tr>
-                                <th>Username</th>
-                                <th>Technical</th>
-                                <th>Management</th>
-                                <th>Design</th>
-                            </tr>
+                        <tr>
+                        <th style={{ borderSpacing: '10px', border: '2px solid green' }}>Username</th>
+                        <th style={{ borderSpacing: '10px', border: '2px solid green' }}>Technical</th>
+                        <th style={{ borderSpacing: '10px', border: '2px solid green' }}>Management</th>
+                        <th style={{ borderSpacing: '10px', border: '2px solid green' }}>Design</th>
+                    </tr>
                         </thead>
                         <tbody className=' '>
                             {filteredUsers.map((user, index) => (
                                 <tr key={index} className=' '>
-                                    <td>{user.username}</td>
-                                    <td>
-                                        {hasDomain(user, 'technical') ? (
-                                            <React.Fragment>
-                                                <button onClick={() => handleUpdateDateTime(user.username, 'technical')}>
-                                                    {user.domains.technical.dateTime ? "" : "Set Time & Date"}
-                                                </button>
-                                                {user.domains.technical && user.domains.technical.dateTime ? (
-                                                    <span>{user.domains.technical.dateTime}</span>
-                                                ) : (
-                                                    <span></span>
-                                                )}
-                                            </React.Fragment>
-                                        ) : (
-                                            <span>Not registered</span>
-                                        )}
+                                    <td className='pl-3' style={{ borderSpacing: '10px', border: '2px solid green' }}>{user.username}</td>
+
+                                    <td style={{ borderSpacing: '10px', border: '2px solid green' }}>
+                                        <center>
+                                            {hasDomain(user, 'technical') ? (
+                                                <React.Fragment>
+                                                    <button onClick={() => handleUpdateDateTime(user.username, 'technical')}>
+                                                        {user.domains.technical.dateTime ? "" : "Set Time & Date"}
+                                                    </button>
+                                                    {user.domains.technical && user.domains.technical.dateTime ? (
+                                                        <span>
+                                                            {user.domains.technical.dateTime}{' '}
+                                                            <button onClick={() => handleUpdateDateTime(user.username, 'technical')}>
+                                                                Edit
+                                                            </button>
+                                                        </span>
+                                                    ) : (
+                                                        <span></span>
+                                                    )}
+                                                </React.Fragment>
+                                            ) : (
+                                                <span>Not registered</span>
+                                            )}
+                                        </center>
+                                    </td> 
+
+                                    <td style={{ borderSpacing: '10px', border: '2px solid green' }}>
+                                        <center>
+                                            {hasDomain(user, 'management') ? (
+                                                <React.Fragment>
+                                                    <button onClick={() => handleUpdateDateTime(user.username, 'management')}>
+                                                        {user.domains.management.dateTime ? "" : "Set Time & Date"}
+                                                    </button>
+                                                    {user.domains.management && user.domains.management.dateTime ? (
+                                                        <span>
+                                                            {user.domains.management.dateTime}{' '}
+                                                            <button onClick={() => handleUpdateDateTime(user.username, 'management')}>
+                                                                Edit
+                                                            </button>
+                                                        </span>
+                                                    ) : (
+                                                        <span></span>
+                                                    )}
+                                                </React.Fragment>
+                                            ) : (
+                                                <span>Not registered</span>
+                                            )}
+                                        </center>
                                     </td>
-                                    <td>
-                                        {hasDomain(user, 'management') ? (
-                                            <React.Fragment>
-                                                <button onClick={() => handleUpdateDateTime(user.username, 'management')}>
-                                                    {user.domains.management.dateTime ? "" : "Set Time & Date"}
-                                                </button>
-                                                {user.domains.management && user.domains.management.dateTime ? (
-                                                    <span>{user.domains.management.dateTime}</span>
-                                                ) : (
-                                                    <span></span>
-                                                )}
-                                            </React.Fragment>
-                                        ) : (
-                                            <span>Not registered</span>
-                                        )}
-                                    </td>
-                                    <td>
-                                        {hasDomain(user, 'design') ? (
-                                            <React.Fragment>
-                                                <button onClick={() => handleUpdateDateTime(user.username, 'design')}>
-                                                    {user.domains.design.dateTime ? "" : "Set Time & Date"}
-                                                </button>
-                                                {user.domains.design && user.domains.design.dateTime ? (
-                                                    <span>{user.domains.design.dateTime}</span>
-                                                ) : (
-                                                    <span></span>
-                                                )}
-                                            </React.Fragment>
-                                        ) : (
-                                            <span>Not registered</span>
-                                        )}
+
+                                    <td style={{ borderSpacing: '10px', border: '2px solid green' }}>
+                                        <center>
+                                            {hasDomain(user, 'design') ? (
+                                                <React.Fragment>
+                                                    <button onClick={() => handleUpdateDateTime(user.username, 'design')}>
+                                                        {user.domains.design.dateTime ? "" : "Set Time & Date"}
+                                                    </button>
+                                                    {user.domains.design && user.domains.design.dateTime ? (
+                                                        <span>
+                                                            {user.domains.design.dateTime}{' '}
+                                                            <button onClick={() => handleUpdateDateTime(user.username, 'design')}>
+                                                                Edit
+                                                            </button>
+                                                        </span>
+                                                    ) : (
+                                                        <span></span>
+                                                    )}
+                                                </React.Fragment>
+                                            ) : (
+                                                <span>Not registered</span>
+                                            )}
+                                        </center>
                                     </td>
                                 </tr>
                             ))}
