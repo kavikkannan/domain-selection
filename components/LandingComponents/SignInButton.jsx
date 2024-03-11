@@ -35,7 +35,7 @@ const SignInButton = () => {
                     // Check if the signed-in email is in the user data file
                     const userDataWithEmail = userData.users.find((user) => user.EmailId === signedInEmail);
                     if (userDataWithEmail) {
-                        router.push('/show_mem');
+                        router.push('/Domain_Selection');
                     } else {
                         // If the user email is not found, set error message
                         setLoading(false);
