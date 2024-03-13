@@ -90,7 +90,7 @@ const ShowMemberTable = () => {
                             <td className='pl-3' style={{ borderSpacing: '10px', border: '2px solid green' }}>{user.username}</td>
                             <td style={{ borderSpacing: '10px', border: '2px solid green' }}><center>{hasDomain(user, 'technical') ? renderDateTime(user.domains.technical.dateTime) : "Not registered"}</center></td>
                             <td style={{ borderSpacing: '10px', border: '2px solid green' }}><center>{hasDomain(user, 'management') ? renderDateTime(user.domains.management.dateTime) : "Not registered"}</center></td>
-                            <td style={{ borderSpacing: '10px', border: '2px solid green' }}><center>{hasDomain(user, 'design') ? renderDateTime(user.domains.design.dateTime) : "Not registered"}</center></td>
+                            <td style={{ borderSpacing: '10px', border: '2px solid green' }}><center>{hasDomain(user, 'design') ? "completed" : "completed"}</center></td>
                         </tr>
                     ))}
                 </tbody>
